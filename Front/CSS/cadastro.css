@@ -1,0 +1,37 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: cadetblue;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    padding: 0.3rem;
+}
+
+.logo img{
+    width: 55px;
+}
+
+.links a{
+    text-decoration: none;
+    color: black;
+    padding-right: 2rem;
+}
+
+.login {
+    margin-left: auto;
+    padding: 0.3rem;
+}
+
+.login img{
+    width: 55px;
+    flex-grow: 3;
+}
