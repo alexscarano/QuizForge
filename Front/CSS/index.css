@@ -20,10 +20,15 @@ header {
     width: 55px;
 }
 
+.links {
+    display: flex;
+    gap: 1rem;
+}
+
 .links a{
     text-decoration: none;
     color: black;
-    padding-right: 2rem;
+    padding: 0.4rem;
 }
 
 .login {
@@ -33,5 +38,8 @@ header {
 
 .login img{
     width: 55px;
-    flex-grow: 3;
+}
+
+body {
+    background-color: antiquewhite;
 }
