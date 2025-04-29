@@ -1,4 +1,4 @@
-package com.mycompany.forgequiz;
+package com.mycompany.forge;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

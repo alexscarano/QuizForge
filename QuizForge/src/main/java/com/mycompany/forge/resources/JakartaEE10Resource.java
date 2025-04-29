@@ -1,4 +1,4 @@
-package com.mycompany.forgequiz.resources;
+package com.mycompany.forge.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

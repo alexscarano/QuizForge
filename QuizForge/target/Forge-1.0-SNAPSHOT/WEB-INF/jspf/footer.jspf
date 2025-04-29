@@ -1,0 +1,14 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+<footer>
+    <div class="info">
+        <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+        <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+    </div>
+    <div class="social">
+        <img class="img-social" src="#" alt="#">
+        <img class="img-social" src="#" alt="#">
+        <img class="img-social" src="#" alt="#">
+    </div>
+</footer>
