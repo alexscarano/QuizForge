@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="assets/css/index.css">
-        <title>JSP Page</title>
+        <title>QuizForge</title>
     </head>
     <body>
         <%@include file="../WEB-INF/jspf/design.jspf" %>
