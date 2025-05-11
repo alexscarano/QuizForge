@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="assets/css/teste.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
     <title>QuizForge</title>
 </head>
 <body>
