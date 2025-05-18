@@ -7,9 +7,6 @@ import util.ConstantesDB;
 
 
 public class DBConnection {
-
-    // O Construtor privado
-    private DBConnection(){}
   
     public static Connection getConnection() throws SQLException{
         
