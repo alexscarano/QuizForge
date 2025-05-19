@@ -9,22 +9,23 @@
         <title>QuizForge</title>
     </head>
     <body>
-        <!-- <%@include file="../WEB-INF/jspf/design.jspf" %>
-        <%@include file="../WEB-INF/jspf/header.jspf" %> -->
+        <%@include file="../WEB-INF/jspf/design.jspf" %>
+        <%@include file="../WEB-INF/jspf/header.jspf" %>
+        <h1>Hello World!</h1>
        <div class="container text-center">
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col">
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <a href="teste.jsp"><button class="btn btn-primary" type="button">Button</button></a>
-</div>
-    </div>
-    <div class="col">
-    </div>
-  </div>
-</div>
-        <!-- <%@include file="../WEB-INF/jspf/footer.jspf" %> -->
+        <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="teste.jsp"><button class="btn btn-primary" type="button">Button</button></a>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+        </div>
+       </div>
+        <%@include file="../WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>
 </html>

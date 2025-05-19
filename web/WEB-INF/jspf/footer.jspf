@@ -3,12 +3,11 @@
 
 <footer>
     <div class="info">
-        <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
-        <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+        <p>QuizForge&COPY; tem todos os direitos reservados</p>
     </div>
     <div class="social">
-        <img class="img-social" src="#" alt="#">
-        <img class="img-social" src="#" alt="#">
-        <img class="img-social" src="#" alt="#">
+        <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
     </div>
 </footer>
