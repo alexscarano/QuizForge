@@ -14,7 +14,7 @@
         
         <main class="form-signin w-100 m-auto">
             <form>
-                <img class="mb-4" src="assets/images/logo.ico" alt="" width="92" height="92">
+                <img class="mb-4" src="assets/images/logo_quizforge_trans.png" alt="" width="92" height="92">
                 <h1 class="h3 mb-3 fw-normal">Faça Login</h1>
                 <div class="form-floating">
                     <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
@@ -27,6 +27,9 @@
                 <div class="form-check text-start my-3">
                     <input class="form-check-input" type="checkbox" value="remember-me" id="checkDefault">
                     <label class="form-check-label" for="checkDefault">Lembre de mim</label>
+                </div>
+                <div>
+                    <p>Ainda não tem uma conta? <a href="/QuizForge/cadastro.jsp">Registre-se!</a></p>
                 </div>
                 <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
             </form>
