@@ -6,7 +6,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import dao.database.DBConnection;
+import model.DBConnection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

@@ -1,9 +1,9 @@
-package dao.database;
+package model;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
-import util.ConstantesDB;
+import util.DBCredentials;
 
 
 public class DBConnection {
@@ -14,14 +14,13 @@ public class DBConnection {
             
            Class.forName("com.mysql.cj.jdbc.Driver");
            
-           return DriverManager.getConnection(
-               ConstantesDB.DB_URL,
-               ConstantesDB.DB_USER,
-               ConstantesDB.DB_USER_PASSWORD
+           return DriverManager.getConnection(DBCredentials.DB_URL,
+               DBCredentials.DB_USER,
+               DBCredentials.DB_USER_PASSWORD
            );
         }
         catch (ClassNotFoundException e){
-            throw new SQLException("Não foi possível fazer a conexão com a instância : " + ConstantesDB.DB_URL + " Usuário: " + ConstantesDB.DB_USER);
+            throw new SQLException("Não foi possível fazer a conexão com a instância : " + DBCredentials.DB_URL + " Usuário: " + DBCredentials.DB_USER);
         }
         
     }
