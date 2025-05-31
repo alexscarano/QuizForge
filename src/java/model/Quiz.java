@@ -14,7 +14,7 @@ public class Quiz {
     private LocalDateTime createdAt;
     private int userId;
 
-    public static String getCreateStatment(){
+    public static String getCreateStatement(){
        return "CREATE TABLE IF NOT EXISTS quiz(\n"
        + "  quiz_id INT AUTO_INCREMENT \n"
        + ", prompt TEXT \n"
@@ -22,9 +22,12 @@ public class Quiz {
        + ", created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n"
        + ", user_id INT\n"
        + ", CONSTRAINT pk_quiz PRIMARY KEY (quiz_id)\n"
-       + ", CONSTRAINT fk_quiz_user FOREIGN KEY (user_id) REFERENCES users (user_id)\n"     
+       + ", CONSTRAINT fk_quiz_user FOREIGN KEY (user_id) REFERENCES user (user_id)\n"     
        + ")"; 
     }
+    
+    
+    
 
     public Quiz(int id, String prompt, JSONObject content, LocalDateTime createdAt, int userId) {
         this.id = id;

@@ -20,7 +20,7 @@ public class DBConnection {
            );
         }
         catch (ClassNotFoundException e){
-            throw new SQLException("Não foi possível fazer a conexão com a instância : " + DBCredentials.DB_URL + " Usuário: " + DBCredentials.DB_USER);
+            throw new SQLException("Não foi possível fazer a conexão com o BD");
         }
         
     }

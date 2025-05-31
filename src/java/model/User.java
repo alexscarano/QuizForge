@@ -12,8 +12,8 @@ public class User {
     private String password;
     private LocalDateTime createdAt;
            
-    public static String getCreateStatment(){
-       return "CREATE TABLE IF NOT EXISTS users (\n"
+    public static String getCreateStatement(){
+       return "CREATE TABLE IF NOT EXISTS user (\n"
        + "  user_id INT AUTO_INCREMENT \n"
        + ", user_login VARCHAR(35) UNIQUE\n"
        + ", user_email VARCHAR(65) UNIQUE \n"
@@ -27,11 +27,11 @@ public class User {
         ArrayList<User> list = new ArrayList<>();
         Connection conn = DBConnection.getConnection();
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM user");
         while(rs.next()){
-            int id = rs.getInt("id");
+            int id = rs.getInt("user_id");
             String login = rs.getString("user_login");
-            String email = rs.getString("email");
+            String email = rs.getString("user_email");
             String password = rs.getString("user_password");
             Timestamp ts = rs.getTimestamp("created_at");
             // Evitar nullpointer caso haja um valor null no banco
@@ -46,7 +46,7 @@ public class User {
     
     public static User getUser(String login, String password) throws Exception{
       Connection conn = DBConnection.getConnection();
-      String sql = "SELECT user_id, user_login, user_email, user_password FROM users WHERE user_login=?";
+      String sql = "SELECT user_id, user_login, user_email, user_password FROM user WHERE user_login=?";
       PreparedStatement stmt = conn.prepareStatement(sql);
       stmt.setString(1, login); // login=?
       ResultSet rs = stmt.executeQuery();
@@ -67,7 +67,7 @@ public class User {
 
     public static void insertUser(String login, String email, String password) throws Exception { 
         Connection conn = DBConnection.getConnection();
-        String sql = "INSERT INTO users(user_login, user_email, user_password) " + "VALUES(?, ?, ?)";
+        String sql = "INSERT INTO user(user_login, user_email, user_password) " + "VALUES(?, ?, ?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
         
         stmt.setString(1, login);
@@ -81,7 +81,7 @@ public class User {
     
     public static void updateUserEmail(String login, String email) throws Exception { 
         Connection conn = DBConnection.getConnection();
-        String sql = "UPDATE users SET email=? WHERE login=?";
+        String sql = "UPDATE user SET user_email=? WHERE user_login=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         stmt.setString(1, email);
@@ -94,7 +94,7 @@ public class User {
     
     public static void updateUserPassword(String login, String password) throws Exception { 
         Connection conn = DBConnection.getConnection();
-        String sql = "UPDATE users SET user_password=? WHERE login=?";
+        String sql = "UPDATE user SET user_password=? WHERE user_login=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         stmt.setString(1, PasswordUtils.hashPassword(password));
@@ -107,9 +107,9 @@ public class User {
     
     public static void deleteUser(int id) throws Exception { 
         Connection conn = DBConnection.getConnection();
-        String sql = "DELETE FROM users WHERE user_id = ?";
+        String sql = "DELETE FROM user WHERE user_id = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setLong(1, id);
+        stmt.setInt(1, id);
         stmt.execute();
         stmt.close();
         conn.close();
