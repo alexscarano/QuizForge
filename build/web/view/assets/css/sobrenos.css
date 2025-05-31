@@ -1,0 +1,256 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    background-color: #f4f4f4; /* Light background as seen in the image */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar .logo img {
+    height: 30px; /* Adjust as needed for your logo */
+    margin-right: 10px;
+}
+
+.navbar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar nav ul li {
+    margin-right: 20px;
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+    color: #007bff; /* Example hover color */
+}
+
+.navbar .user-icon svg {
+    fill: #555;
+    height: 24px;
+    width: 24px;
+}
+
+/* Hero Section Styles */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+.hero h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hero-content p {
+    text-align: left;
+    max-width: 500px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.hero-image {
+    max-width: 300px; /* Adjust as needed */
+    height: auto;
+}
+
+/* Vision and Mission Section Styles */
+.vision-mission {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.vision-mission .card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: left;
+}
+
+.vision-mission .card h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.vision-mission .card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Team Section Styles */
+.team {
+    text-align: center;
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.team h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.member {
+    text-align: center;
+    width: 150px; /* Adjust as needed */
+}
+
+.member-photo {
+    width: 100px;
+    height: 100px;
+    background-color: #ff8c00; /* Orange color from the image */
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex; /* To center content if any in future */
+    align-items: center;
+    justify-content: center;
+}
+
+.member h3 {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.member p {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.3;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.social-icons a {
+    margin-left: 15px;
+}
+
+.social-icons img {
+    height: 24px; /* Adjust as needed for your social icons */
+    width: 24px;
+    vertical-align: middle;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar nav ul {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar nav ul li {
+        margin: 5px 10px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+    }
+
+    .vision-mission {
+        flex-direction: column;
+    }
+
+    .vision-mission .card {
+        margin-bottom: 20px;
+    }
+
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .member {
+        margin-bottom: 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
