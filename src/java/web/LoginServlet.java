@@ -16,12 +16,12 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String email = request.getParameter("email").trim();
+        String emailOrLogin = request.getParameter("emailOrLogin").trim();
         String password = request.getParameter("password").trim();
         User userAuth = null;
 
         try {
-            userAuth = User.getUser(email, password);
+            userAuth = User.getUser(emailOrLogin, password);
             if (userAuth != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", userAuth);

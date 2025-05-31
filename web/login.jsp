@@ -21,7 +21,6 @@
             }
         %>
               
-        <%-- Em login.jsp, logo abaixo do <h1>Login</h1> --%>
         <%
             String registerSucess = request.getParameter("registerSuccess");
             if ("true".equals(registerSucess)) {
@@ -35,8 +34,8 @@
                 <img class="mb-4" src="assets/images/logo_quizforge_trans.png" alt="" width="92" height="92">
                 <h1 class="h3 mb-3 fw-normal">Faça Login</h1>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" name="email">
-                    <label for="floatingInput">Endereço de email</label>
+                    <input type="text" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" name="emailOrLogin">
+                    <label for="floatingInput">Endereço de email ou nome de usuário</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="password">

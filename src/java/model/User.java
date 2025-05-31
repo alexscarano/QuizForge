@@ -44,32 +44,61 @@ public class User {
         return list;
     }
    
-    public static User getUser(String email, String plainPassword) throws Exception {
-    Connection conn = DBConnection.getConnection();
-    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE user_email = ?");
-    stmt.setString(1, email);
-    ResultSet rs = stmt.executeQuery();
+//    public static User getUser(String email, String plainPassword) throws Exception {
+//        Connection conn = DBConnection.getConnection();
+//        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE user_email = ?");
+//        stmt.setString(1, email);
+//        ResultSet rs = stmt.executeQuery();
+//
+//        if (rs.next()) {
+//            String storedHashedPassword = rs.getString("user_password");
+//
+//            // Verifica o hash da senha
+//            if (PasswordUtils.checkPassword(plainPassword, storedHashedPassword)) {
+//                int id = rs.getInt("user_id");
+//                String login = rs.getString("user_login");
+//                Timestamp ts = rs.getTimestamp("created_at");
+//                LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
+//
+//                return new User(id, login, email, storedHashedPassword, createdAt);
+//            }
+//        }
+//
+//        rs.close();
+//        stmt.close();
+//        conn.close();
+//        return null; // Credenciais inválidas
+//    }
+    
+    public static User getUser(String loginOrEmail, String plainPassword) throws Exception {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(
+            "SELECT * FROM user WHERE user_email = ? OR user_login = ?"
+        );
+        stmt.setString(1, loginOrEmail);
+        stmt.setString(2, loginOrEmail);
+        ResultSet rs = stmt.executeQuery();
 
-    if (rs.next()) {
-        String storedHashedPassword = rs.getString("user_password");
+        if (rs.next()) {
+            String storedHashedPassword = rs.getString("user_password");
 
-        // Verifica o hash da senha
-        if (PasswordUtils.checkPassword(plainPassword, storedHashedPassword)) {
-            int id = rs.getInt("user_id");
-            String login = rs.getString("user_login");
-            Timestamp ts = rs.getTimestamp("created_at");
-            LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
+            if (PasswordUtils.checkPassword(plainPassword, storedHashedPassword)) {
+                int id = rs.getInt("user_id");
+                String login = rs.getString("user_login");
+                String email = rs.getString("user_email");
+                Timestamp ts = rs.getTimestamp("created_at");
+                LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
 
-            return new User(id, login, email, storedHashedPassword, createdAt);
+                return new User(id, login, email, storedHashedPassword, createdAt);
+            }
         }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+        return null;
     }
-
-    rs.close();
-    stmt.close();
-    conn.close();
-    return null; // Credenciais inválidas
-}
-
+    
     public static void insertUser(String login, String email, String password) throws Exception { 
         Connection conn = DBConnection.getConnection();
         String sql = "INSERT INTO user(user_login, user_email, user_password) " + "VALUES(?, ?, ?)";
@@ -79,6 +108,19 @@ public class User {
         stmt.setString(2, email);
         stmt.setString(3, PasswordUtils.hashPassword(password));
         
+        stmt.execute();
+        stmt.close();
+        conn.close();
+    }
+    
+    public static void updateUserLogin(String login, String email) throws Exception { 
+        Connection conn = DBConnection.getConnection();
+        String sql = "UPDATE user SET user_login=? WHERE user_email=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        stmt.setString(1, login);
+        stmt.setString(2, email);
+
         stmt.execute();
         stmt.close();
         conn.close();
@@ -97,13 +139,13 @@ public class User {
         conn.close();
     }
     
-    public static void updateUserPassword(String login, String password) throws Exception { 
+    public static void updateUserPassword(String email, String password) throws Exception { 
         Connection conn = DBConnection.getConnection();
-        String sql = "UPDATE user SET user_password=? WHERE user_login=?";
+        String sql = "UPDATE user SET user_password=? WHERE user_email=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         stmt.setString(1, PasswordUtils.hashPassword(password));
-        stmt.setString(2, login);
+        stmt.setString(2, email);
 
         stmt.execute();
         stmt.close();
