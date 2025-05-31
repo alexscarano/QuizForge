@@ -2,11 +2,12 @@
 <%@ page pageEncoding="UTF-8" %>
 
 <header>
-    <div class="logo"><a href="/Forge/"><img src="Midia/logo_gen.png" alt="Placeholder logo"></a></div>
+    <div class="logo"><a href="/QuizForge"><img src="assets/images/logo_quizforge_trans.png" alt="Placeholder logo"></a></div>
     <div class="links">
-        <a href="http://" target="_blank">placeholder</a>
-        <a href="http://" target="_blank">placeholder</a>
-        <a href="http://" target="_blank">placeholder</a>
+        <a href="/QuizForge/sobre_nos.jsp">Sobre Nós</a>
     </div>
-    <div class="login"><a href="/Forge/cadastro.jsp"><img src="Midia/futuro_icone.png" alt="usuario"></a></div>
+    <div class="login">
+        <i class="fa-solid fa-circle-half-stroke fa-xl" onclick="myFunction_set()"></i>
+        <a href="/QuizForge/login.jsp"><i class="fa-thin fa-circle-user fa-2xl"></i></a>
+    </div>
 </header>

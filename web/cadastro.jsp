@@ -1,46 +1,45 @@
-<%-- 
-    Document   : cadastro
-    Created on : 29 de abr. de 2025, 13:53:32
-    Author     : gekki
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/cadastro.css">
-    <title>cadastro usuario</title>
-</head>
-<body>
-    <%@include file="WEB-INF/jspf/design.jspf" %>
-    <%@include file="WEB-INF/jspf/header.jspf" %>
-    <main>
-        <div class="cadastro">
-            <form action="" method="post">
-                <div class="titulo"><h3>Cadastro</h3></div>
-                <div class="campo-texto">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" required>
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" required>
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" required>
-                    <label for="conf-senha">Confirmar Senha</label>
-                    <input type="password" name="conf-senha" id="conf-senha" required>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="assets/css/login_cadastro.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <title>QuizForge</title>
+    </head>
+    <body>
+        <%@include file="WEB-INF/jspf/header.jspf" %>
+        
+        <main class="form-signin w-100 m-auto">
+            <form>
+                <img class="mb-4" src="assets/images/logo_quizforge_trans.png" alt="" width="92" height="92">
+                <h1 class="h3 mb-3 fw-normal">Crie sua conta</h1>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                    <label for="floatingInput">Usuário</label>
                 </div>
-                <div class="confirmar">
-                    <input type="checkbox" name="concordar" id="concordar" required>
-                    <label for="concordar">concordo com isso</label>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                    <label for="floatingInput">Endereço de email</label>
                 </div>
-                <button type="submit">Confirmar</button>
-                <div class="ir-login">
-                    <p>Fazer <a href="/Forge/login.jsp">login</a></p>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                    <label for="floatingPassword">Senha</label>
                 </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                    <label for="floatingPassword">Confirmar senha</label>
+                </div>
+                <div>
+                    <p>Já tem uma conta? Faça <a href="/QuizForge/login.jsp">Login</a></p>
+                </div>
+                <button class="btn btn-primary w-100 py-2" type="submit">Cadastre-se</button>
             </form>
-        </div>
-    </main>
-    <%@include file="WEB-INF/jspf/footer.jspf"%>
-</body>
+        </main>
+        
+        <%@include file="WEB-INF/jspf/footer.jspf" %>
+    </body>
+</html>
 </html>

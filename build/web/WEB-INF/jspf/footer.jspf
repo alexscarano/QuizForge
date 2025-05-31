@@ -3,12 +3,13 @@
 
 <footer>
     <div class="info">
-        <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
-        <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+        <p>QuizForge <%= java.time.Year.now().getValue() %> &COPY; todos os direitos reservados</p>
     </div>
     <div class="social">
-        <img class="img-social" src="#" alt="#">
-        <img class="img-social" src="#" alt="#">
-        <img class="img-social" src="#" alt="#">
+        <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
     </div>
 </footer>
+
+<script src="assets/js/tema.js"></script>
