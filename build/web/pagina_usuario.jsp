@@ -10,7 +10,7 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
-        <h1>Hello World!</h1>
+
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

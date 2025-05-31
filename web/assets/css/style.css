@@ -4,11 +4,11 @@
     --cor_fundo : #f2eded;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     :root {
-        --cor_primaria : blue;
-        --cor_secundaria : red;
-        --cor_fundo : black;
+        --cor_primaria : #f2eded;
+        --cor_secundaria : #ff6f00;
+        --cor_fundo : #3c3c3c;
     }
 }
 
@@ -48,6 +48,7 @@ header {
 .links a{
     text-decoration: none;
     color: var(--cor_fundo);
+    transition: ease-in 0.2s;
 }
 
 .links a:hover {
@@ -55,7 +56,6 @@ header {
     background-color: var(--cor_fundo);
     border-radius: 0.3rem;
     padding: 0.5rem;
-    transition: ease-in 0.2s;
 }
 
 .login i:hover {

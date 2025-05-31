@@ -12,25 +12,56 @@
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
         
+        <style>
+            html,
+            body {
+              height: 100vh;
+            }
+
+            body {
+                background-color: var(--cor_fundo);
+            }
+
+            .form-signin {
+              max-width: 420px;
+              padding: 1rem;
+            }
+
+            .form-signin .form-floating:focus-within {
+              z-index: 2;
+            }
+
+            .form-signin input {
+              margin-bottom: 0px;
+              border-bottom-right-radius: 0;
+              border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+              border-top-left-radius: 0;
+              border-top-right-radius: 0;
+            }
+        </style>
+        
         <main class="form-signin w-100 m-auto">
             <form>
                 <img class="mb-4" src="assets/images/logo_quizforge_trans.png" alt="" width="92" height="92">
                 <h1 class="h3 mb-3 fw-normal">Crie sua conta</h1>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                    <input type="email" class="form-control" name="nome" id="floatingInput" placeholder="nome@exemplo.com" required>
                     <label for="floatingInput">Usuário</label>
                 </div>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="nome@exemplo.com" required>
                     <label for="floatingInput">Endereço de email</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                    <input type="password" class="form-control" name="senha" id="floatingPassword" placeholder="Senha" required>
                     <label for="floatingPassword">Senha</label>
                 </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
-                    <label for="floatingPassword">Confirmar senha</label>
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" name="conf-senha" id="floatingConfirmationPassword" placeholder="Confirmar senha" required>
+                    <label for="floatingConfirmationPassword">Confirmar senha</label>
                 </div>
                 <div>
                     <p>Já tem uma conta? Faça <a href="/QuizForge/login.jsp">Login</a></p>

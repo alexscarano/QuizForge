@@ -10,7 +10,18 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
-
+            <form>
+            <input type="text" id="nome" placeholder="novo nome">
+            <button class="" type="submit">Mudar</button><br>
+            
+            <input type="email" id="email" placeholder="novo email">
+            <button class="" type="submit">Mudar</button><br><br>
+            
+            <input type="text" placeholder="senha atual">
+            
+            <input type="text" placeholder="nova senha">
+            <button class="" type="submit">Mudar</button>
+        </form>
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>
