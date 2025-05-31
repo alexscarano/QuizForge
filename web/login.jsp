@@ -35,7 +35,7 @@
                 <h1 class="h3 mb-3 fw-normal">Faça Login</h1>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" name="emailOrLogin">
-                    <label for="floatingInput">Endereço de email ou nome de usuário</label>
+                    <label for="floatingInput">Email ou Login</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="password">

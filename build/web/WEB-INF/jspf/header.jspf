@@ -5,6 +5,7 @@
     <div class="logo"><a href="/QuizForge"><img src="assets/images/logo_quizforge_trans.png" alt="Placeholder logo"></a></div>
     <div class="links">
         <a href="/QuizForge/sobre_nos.jsp">Sobre Nós</a>
+        <a href="<%= request.getContextPath() %>/logoutServlet">Sair </a>
     </div>
     <div class="login">
         <i class="fa-solid fa-circle-half-stroke fa-xl" onclick="myFunction_set()"></i>
