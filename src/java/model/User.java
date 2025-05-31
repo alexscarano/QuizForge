@@ -43,27 +43,32 @@ public class User {
         conn.close();
         return list;
     }
-    
-    public static User getUser(String login, String password) throws Exception{
-      Connection conn = DBConnection.getConnection();
-      String sql = "SELECT user_id, user_login, user_email, user_password FROM user WHERE user_login=?";
-      PreparedStatement stmt = conn.prepareStatement(sql);
-      stmt.setString(1, login); // login=?
-      ResultSet rs = stmt.executeQuery();
-        if(rs.next()){ // If pois só retorna um registro, se retornasse varios seria um while
-            int id = rs.getInt("user_id");
-            String email = rs.getString("user_email");
-            String hashedPassword = rs.getString("user_password");
+   
+    public static User getUser(String email, String plainPassword) throws Exception {
+    Connection conn = DBConnection.getConnection();
+    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE user_email = ?");
+    stmt.setString(1, email);
+    ResultSet rs = stmt.executeQuery();
 
-            if (PasswordUtils.checkPassword(password, hashedPassword)){
-              return new User(id, login, email, null, null);
-            }
+    if (rs.next()) {
+        String storedHashedPassword = rs.getString("user_password");
+
+        // Verifica o hash da senha
+        if (PasswordUtils.checkPassword(plainPassword, storedHashedPassword)) {
+            int id = rs.getInt("user_id");
+            String login = rs.getString("user_login");
+            Timestamp ts = rs.getTimestamp("created_at");
+            LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
+
+            return new User(id, login, email, storedHashedPassword, createdAt);
         }
-      rs.close();
-      stmt.close();
-      conn.close();
-      return null;
     }
+
+    rs.close();
+    stmt.close();
+    conn.close();
+    return null; // Credenciais inválidas
+}
 
     public static void insertUser(String login, String email, String password) throws Exception { 
         Connection conn = DBConnection.getConnection();

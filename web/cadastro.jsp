@@ -13,23 +13,23 @@
         <%@include file="WEB-INF/jspf/header.jspf" %>
         
         <main class="form-signin w-100 m-auto">
-            <form>
+            <form action="RegisterServlet" method="post">
                 <img class="mb-4" src="assets/images/logo_quizforge_trans.png" alt="" width="92" height="92">
                 <h1 class="h3 mb-3 fw-normal">Crie sua conta</h1>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" name="login">
                     <label for="floatingInput">Usuário</label>
                 </div>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" name="email">
                     <label for="floatingInput">Endereço de email</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="password">
                     <label for="floatingPassword">Senha</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="confirmPassword">
                     <label for="floatingPassword">Confirmar senha</label>
                 </div>
                 <div>

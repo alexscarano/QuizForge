@@ -12,16 +12,34 @@
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
         
+        <%
+            String errorMessage = (String) request.getAttribute("errorMessage");
+            if (errorMessage != null) {
+        %>
+            <p style="color: red; text-align: center;"><%= errorMessage %></p>
+        <%
+            }
+        %>
+              
+        <%-- Em login.jsp, logo abaixo do <h1>Login</h1> --%>
+        <%
+            String registerSucess = request.getParameter("registerSuccess");
+            if ("true".equals(registerSucess)) {
+        %>
+            <p style="color: green;">Cadastro realizado com sucesso! Faça login.</p>
+        <%
+            }
+        %>
         <main class="form-signin w-100 m-auto">
-            <form>
+            <form action="loginServlet" method="post">
                 <img class="mb-4" src="assets/images/logo_quizforge_trans.png" alt="" width="92" height="92">
                 <h1 class="h3 mb-3 fw-normal">Faça Login</h1>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" name="email">
                     <label for="floatingInput">Endereço de email</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="password">
                     <label for="floatingPassword">Senha</label>
                 </div>
                 <div class="form-check text-start my-3">

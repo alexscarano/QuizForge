@@ -6,8 +6,6 @@ import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 import java.util.Date;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Quiz;
 import model.User;
 
@@ -26,7 +24,6 @@ public class AppListener implements ServletContextListener{
     public void contextInitialized(ServletContextEvent sce) {
         Connection conn = null;
         Statement s = null;
-
         
         initializeLog += "Initializing log: " + new Date() + "\n";
         try {
@@ -47,13 +44,11 @@ public class AppListener implements ServletContextListener{
             initializeLog += "Creating Quiz table if not exists...\n";
             s.execute(Quiz.getCreateStatement());
             initializeLog += "Quiz table has been created or already exists\n";
-           
+            
         } catch (Exception e) {
             initializeLog += "Error: \n" + e.getMessage();
         }
-        
-     
-           
+              
     }
             
 }
