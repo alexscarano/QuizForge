@@ -14,9 +14,9 @@ public class DBConnection {
             
            Class.forName("com.mysql.cj.jdbc.Driver");
            
-           return DriverManager.getConnection(DBCredentials.DB_URL,
-               DBCredentials.DB_USER,
-               DBCredentials.DB_USER_PASSWORD
+           return DriverManager.getConnection(DBCredentials.getDBUrl(),
+               DBCredentials.getDBUser(),
+               DBCredentials.getDBUserPassword()
            );
         }
         catch (ClassNotFoundException e){
