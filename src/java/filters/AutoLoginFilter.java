@@ -1,4 +1,4 @@
-package web;
+package filters;
 
 import java.io.IOException;
 import jakarta.servlet.Filter;
@@ -36,6 +36,7 @@ public class AutoLoginFilter implements Filter {
                                 HttpSession newSession = request.getSession();
                                 newSession.setAttribute("user", user);
                                 newSession.setAttribute("userLogged", user.getEmail());
+                                response.sendRedirect(request.getContextPath() + "/index.jsp");
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
