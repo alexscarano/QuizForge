@@ -12,15 +12,49 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
-        <main>
-            <div class="texto">
-                <h1>Bem vindo!</h1>
-                <p>Escolha o tópico da prova que será gerada</p>
-            </div>
-            <form class="caixa" action="#" method="POST">
-                <input type="text" name="consulta" id="consulta">
+        
+        <style>
+            body {
+                background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+                background-color: #918f91;
+          }
+          
+          main {
+            animation: fadeIn 1s ease-in;
+          }
+          
+          input {
+              box-shadow: none;
+          }
+          
+          btn {
+              background-color: var(--cor_secundaria);
+          }
+
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        </style>
+        
+        <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+            <div class="container text-center">
+                <div class="mb-4">
+                    <h1 class="display-5 fw-bold">Bem-vindo ao QuizForge!</h1>
+                    <p class="lead">Digite o tema da prova que deseja gerar com a ajuda da IA:</p>
+                </div>
+
+            <form action="gerarQuiz" method="POST" class="mx-auto">
+                <div class="input-group shadow-sm">
+                    <input type="text" name="consulta" id="consulta" class="form-control form-control-lg" placeholder="Ex: História do Brasil, Java básico, Álgebra linear..." required>
+                    <button class="btn btn-primary btn-lg" type="submit">
+                        <i class="fas fa-magic me-1"></i> Gerar
+                    </button>
+                </div>
             </form>
+            </div>
         </main>
+        
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

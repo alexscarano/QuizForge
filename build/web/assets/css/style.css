@@ -27,6 +27,7 @@ header {
     align-self: normal;
     gap: 2rem;
     margin-top: -0.1rem;
+    border-bottom: 0.3rem solid black;
 }
 
 .logo {
@@ -75,6 +76,7 @@ footer {
     align-self: normal;
     padding: 1rem;
     color: white;
+    border-top: 0.3rem solid black;
 }
 
 footer p {
