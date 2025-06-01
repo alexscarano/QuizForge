@@ -42,36 +42,36 @@
         <% } %>
 
         <form action="loginServlet" method="post">
-          <div class="mb-3">
-            <label for="emailOrLogin" class="form-label">
-              <i class="fa-solid fa-user"></i> Email ou Login
-            </label>
-            <input type="text" class="form-control" id="emailOrLogin" name="emailOrLogin" placeholder="Digite seu email ou login" required>
-          </div>
+            <div class="mb-3">
+              <label for="emailOrLogin" class="form-label">
+                <i class="fa-solid fa-user"></i> Email ou Login
+              </label>
+              <input type="text" class="form-control" id="emailOrLogin" name="emailOrLogin" placeholder="Digite seu email ou login" required>
+            </div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">
-              <i class="fa-solid fa-lock"></i> Senha
-            </label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" required>
-          </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">
+                <i class="fa-solid fa-lock"></i> Senha
+              </label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" required>
+            </div>
 
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
-            <label class="form-check-label" for="rememberMe">
-              <i class="fa-regular fa-circle-check"></i> Lembre de mim
-            </label>
-          </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" value="on">
+                <label class="form-check-label" for="rememberMe">
+                <i class="fa-regular fa-circle-check"></i> Lembre de mim
+                </label>
+              </div>
 
-          <div class="d-grid mb-3">
-            <button class="btn btn-primary" type="submit">
-              <i class="fa-solid fa-right-to-bracket"></i> Entrar
-            </button>
-          </div>
+            <div class="d-grid mb-3">
+              <button class="btn btn-primary" type="submit">
+                <i class="fa-solid fa-right-to-bracket"></i> Entrar
+              </button>
+            </div>
 
-          <div class="text-center">
-            <small>Não tem uma conta? <a href="/QuizForge/cadastro.jsp">Cadastre-se</a></small>
-          </div>
+            <div class="text-center">
+              <small>Não tem uma conta? <a href="/QuizForge/cadastro.jsp">Cadastre-se</a></small>
+            </div>
         </form>
       </div>
     </div>

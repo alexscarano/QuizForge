@@ -49,4 +49,3 @@ public class AutoLoginFilter implements Filter {
         chain.doFilter(req, res);
     }
 }
-

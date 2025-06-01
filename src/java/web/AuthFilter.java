@@ -20,7 +20,6 @@ public class AuthFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-
         HttpSession session = httpRequest.getSession(false);
 
         if (session == null || session.getAttribute("userLogged") == null) {
