@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="assets/css/index.css">
-        <link rel="stylesheet" href="assets/css/style.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="assets/css/index.css">
+        <link rel="stylesheet" href="assets/css/style.css">
         <title>QuizForge</title>
     </head>
     <body>
@@ -41,7 +41,7 @@
             <div class="container text-center">
                 <div class="mb-4">
                     <h1 class="display-5 fw-bold">Bem-vindo ao QuizForge!</h1>
-                    <p class="lead">Digite o tema da prova que deseja gerar com a ajuda da IA:</p>
+                    <p class="lead">Digite o tema da prova que deseja gerar com a ajuda da IA</p>
                 </div>
 
             <form action="gerarQuiz" method="POST" class="mx-auto">

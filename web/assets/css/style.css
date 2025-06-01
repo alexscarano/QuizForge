@@ -19,7 +19,7 @@ body {
     background-color: var(--cor_fundo);
 }
 
-header {
+#nave {
     background-color: var(--cor_primaria);
     display: flex;
     justify-content: flex-start;
@@ -27,7 +27,7 @@ header {
     align-self: normal;
     gap: 2rem;
     margin-top: -0.1rem;
-    border-bottom: 0.3rem solid black;
+    border-bottom: 0.1rem solid black;
 }
 
 .logo {
@@ -76,7 +76,7 @@ footer {
     align-self: normal;
     padding: 1rem;
     color: white;
-    border-top: 0.3rem solid black;
+    border-top: 0.1rem solid black;
 }
 
 footer p {

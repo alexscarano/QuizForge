@@ -1,7 +1,7 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 
-<header>
+<header id="nave">
     <div class="logo"><a href="/QuizForge"><img src="assets/images/logo_quizforge_trans.png" alt="Placeholder logo"></a></div>
     <div class="links">
         <a href="/QuizForge/sobre_nos.jsp">Sobre Nós</a>
