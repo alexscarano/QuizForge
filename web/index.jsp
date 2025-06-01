@@ -24,9 +24,9 @@
                 <p class="lead">Digite o tema da prova que deseja gerar com a ajuda da IA:</p>
             </div>
 
-            <form action="gerarQuiz" method="POST" class="mx-auto" style="max-width: 600px;">
+            <form action="generateQuiz" method="POST" class="mx-auto" style="max-width: 600px;">
                 <div class="input-group shadow-sm">
-                    <input type="text" name="consulta" id="consulta" class="form-control form-control-lg" placeholder="Ex: História do Brasil, Java básico, Álgebra linear..." required>
+                    <input type="text" name="captureQuiz" class="form-control form-control-lg" placeholder="Ex: História do Brasil, Java básico, Álgebra linear..." required>
                     <button class="btn btn-primary btn-lg" type="submit">
                         <i class="fas fa-magic me-1"></i> Gerar
                     </button>

@@ -39,7 +39,7 @@ public class AutoLoginFilter implements Filter {
                                 response.sendRedirect(request.getContextPath() + "/index.jsp");
                             }
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            
                         }
                         break;
                     }
