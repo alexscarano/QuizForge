@@ -14,10 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.User;
 import util.PasswordUtils;
 
-/**
- *
- * @author alexa
- */
+
 @WebServlet(name = "RegisterServlet", urlPatterns = {"/RegisterServlet"})
 public class RegisterServlet extends HttpServlet {
     

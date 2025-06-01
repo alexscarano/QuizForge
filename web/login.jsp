@@ -57,7 +57,7 @@
           </div>
 
           <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="rememberMe">
+            <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
             <label class="form-check-label" for="rememberMe">
               <i class="fa-regular fa-circle-check"></i> Lembre de mim
             </label>
