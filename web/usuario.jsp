@@ -2,22 +2,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="assets/css/style.css">
         <title>Usuário</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
         
         <style>
-            
-            body {
-              background-color: #ebebeb;
-            }
-
             .sidebar {
               position: fixed;
               top: 11vh;
@@ -43,13 +39,22 @@
               overflow-x: hidden;
               overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
             }
+            
+            .btn-warning {
+                  background-color: var(--cor_secundaria);
+            }
+
+            .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
+                  background-color: #ee5e00;
+                  box-shadow: none;
+            }
         </style>
         
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4 mt-3 ">
                     <a href="/QuizForge/usuario.jsp" class="list-group-item list-group-item-action py-2 active bg-secondary" aria-current="true">
-                      <i class="fa-solid fa-user fa-fw me-3"></i><span>Gerenciar conta</span>
+                      <i class="bi bi-person-gear fa-fw me-3"></i><span>Gerenciar conta</span>
                     </a>
 
                     <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item list-group-item-action py-2">
@@ -67,7 +72,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
 
-                    <h2 class="mb-4 text-center"><i class="bi bi-person-gear"></i> Gerenciar Conta</h2>
+                    <h2 class="mb-4 text-center"> Gerenciar Conta</h2>
 
                     <%
                         String errorMessage = (String) request.getAttribute("errorMessage");
@@ -87,7 +92,7 @@
                             <form action="profileUpdate" method="post">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="newLogin" placeholder="Novo login" required>
-                                    <button type="submit" class="btn btn-primary" name="action" value="updateLogin">Atualizar</button>
+                                    <button type="submit" class="btn btn-warning" name="action" value="updateLogin">Atualizar</button>
                                 </div>
                             </form>
                         </div>
@@ -100,7 +105,7 @@
                             <form action="profileUpdate" method="post">
                                 <div class="input-group">
                                     <input type="email" class="form-control" name="newEmail" placeholder="Novo e-mail" required>
-                                    <button type="submit" class="btn btn-primary" name="action" value="updateEmail">Atualizar</button>
+                                    <button type="submit" class="btn btn-warning" name="action" value="updateEmail">Atualizar</button>
                                 </div>
                             </form>
                         </div>

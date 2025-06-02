@@ -2,72 +2,84 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="assets/css/login_cadastro.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
+        <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="assets/css/style.css">
         <title>Cadastro</title>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/header.jspf" %>
-        
         <style>
-            html,
-            body {
-              height: 100vh;
+            .btn-warning {
+                background-color: var(--cor_secundaria);
             }
 
-            body {
-                background-color: var(--cor_fundo);
-            }
-
-            .form-signin {
-              max-width: 420px;
-              padding: 1rem;
-            }
-
-            .form-signin .form-floating:focus-within {
-              z-index: 2;
-            }
-
-            .form-signin input {
-              margin-bottom: 0px;
-              border-bottom-right-radius: 0;
-              border-bottom-left-radius: 0;
-            }
-
-            .form-signin input[type="password"] {
-              border-top-left-radius: 0;
-              border-top-right-radius: 0;
+            .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
+                background-color: #ee5e00;
+                box-shadow: none;
             }
         </style>
         
-        <main class="form-signin w-100 m-auto">
-            <form>
-                <img class="mb-4" src="assets/images/logo_quizforge_trans.png" alt="" width="92" height="92">
-                <h1 class="h3 mb-3 fw-normal">Crie sua conta</h1>
-                <div class="form-floating">
-                    <input type="email" class="form-control" name="nome" id="floatingInput" placeholder="nome@exemplo.com" required>
-                    <label for="floatingInput">Usuário</label>
+        <%@include file="WEB-INF/jspf/header.jspf" %>
+        
+        <main>
+            <div class="container d-flex justify-content-center align-items-center flex-grow-1">
+              <div class="card shadow-lg p-4" style="max-width: 450px; width: 100vh;">
+                <div class="text-center mb-4">
+                  <img src="assets/images/logo_quizforge_trans.png" alt="Logo" width="80" height="80">
+                  <h2 class="mt-2">Crie sua conta</h2>
                 </div>
-                <div class="form-floating">
-                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="nome@exemplo.com" required>
-                    <label for="floatingInput">Endereço de email</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" name="senha" id="floatingPassword" placeholder="Senha" required>
-                    <label for="floatingPassword">Senha</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="password" class="form-control" name="conf-senha" id="floatingConfirmationPassword" placeholder="Confirmar senha" required>
-                    <label for="floatingConfirmationPassword">Confirmar senha</label>
-                </div>
-                <div>
-                    <p>Já tem uma conta? Faça <a href="/QuizForge/login.jsp">Login</a></p>
-                </div>
-                <button class="btn btn-primary w-100 py-2" type="submit">Cadastre-se</button>
-            </form>
+
+                <% String errorMessage = (String) request.getAttribute("errorMessage");
+                   if (errorMessage != null) { %>
+                  <div class="alert alert-danger text-center" role="alert">
+                    <%= errorMessage %>
+                  </div>
+                <% } %>
+
+                <form action="RegisterServlet" method="post">
+                  <div class="mb-3">
+                    <label for="login" class="form-label">
+                      <i class="fa-solid fa-user"></i> Usuário
+                    </label>
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Escolha um nome de usuário" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">
+                      <i class="fa-solid fa-envelope"></i> Email
+                    </label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="password" class="form-label">
+                      <i class="fa-solid fa-lock"></i> Senha
+                    </label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Crie uma senha segura" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">
+                      <i class="fa-solid fa-lock"></i> Confirmar Senha
+                    </label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha" required>
+                  </div>
+
+                  <div class="d-grid mb-3">
+                    <button class="btn btn-success btn-warning" type="submit">
+                        Cadastrar
+                    </button>
+                  </div>
+
+                  <div class="text-center">
+                    <small>Já tem uma conta? <a href="/QuizForge/login.jsp">Faça login</a></small>
+                  </div>
+                </form>
+              </div>
+            </div>
         </main>
         
         <%@include file="WEB-INF/jspf/footer.jspf" %>

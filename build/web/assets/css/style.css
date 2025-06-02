@@ -1,7 +1,7 @@
 :root {
     --cor_primaria : #3c3c3c;
     --cor_secundaria : #ff6f00;
-    --cor_fundo : #f2eded;
+    --cor_fundo : #F5F2E4;
 }
 
 * {
@@ -16,7 +16,8 @@ body {
     flex-flow: column;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--cor_fundo);
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-color: #918f91;
 }
 
 #nave {
@@ -27,7 +28,7 @@ body {
     align-self: normal;
     gap: 2rem;
     margin-top: -0.1rem;
-    border-bottom: 0.1rem solid black;
+    border-bottom: 0.15rem solid var(--cor_fundo);
 }
 
 .logo {
@@ -76,7 +77,7 @@ footer {
     align-self: normal;
     padding: 1rem;
     color: white;
-    border-top: 0.1rem solid black;
+    border-top: 0.15rem solid var(--cor_fundo);
 }
 
 footer p {

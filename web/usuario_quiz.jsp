@@ -2,20 +2,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="assets/css/style.css">
         <title>Usuário</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
         <style>
-            
-            body {
-              background-color: #ebebeb;
-            }
 
             .sidebar {
               position: fixed;
@@ -48,7 +45,7 @@
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4 mt-3 ">
                     <a href="/QuizForge/usuario.jsp" class="list-group-item list-group-item-action py-2" aria-current="true">
-                      <i class="fa-solid fa-user fa-fw me-3"></i><span>Gerenciar conta</span>
+                      <i class="bi bi-person-gear fa-fw me-3"></i><span>Gerenciar conta</span>
                     </a>
 
                     <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item list-group-item-action py-2 active bg-secondary">
