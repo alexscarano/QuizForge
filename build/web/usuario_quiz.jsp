@@ -13,17 +13,22 @@
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
         <style>
-
             .sidebar {
               position: fixed;
               top: 11vh;
               bottom: 0;
               left: 0;
-              padding: 20vh 0 0;
+              padding: 20vh 0 0; /* Height of navbar */
               box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
               width: 280px;
               height: 80vh;
               z-index: 600;
+              border-radius: 0rem 2rem 2rem 0rem;
+            }
+            
+            .tema {
+                background-color: var(--cor_primaria);
+                color: white;
             }
 
             .sidebar .active {
@@ -37,42 +42,40 @@
               height: calc(100vh - 48px);
               padding-top: 0.5rem;
               overflow-x: hidden;
-              overflow-y: auto;
+              overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+            }
+            
+            .tema-white {
+                color: black;
+            }
+            
+            .btn-warning {
+                  background-color: var(--cor_secundaria);
+            }
+
+            .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
+                  background-color: #ee5e00;
+                  box-shadow: none;
             }
         </style>
         
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-            <div class="position-sticky">
-                <div class="list-group list-group-flush mx-3 mt-4 mt-3 ">
-                    <a href="/QuizForge/usuario.jsp" class="list-group-item list-group-item-action py-2" aria-current="true">
-                      <i class="bi bi-person-gear fa-fw me-3"></i><span>Gerenciar conta</span>
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar tema">
+            <div class="position-sticky tema">
+                <div class="list-group list-group-flush mx-3 mt-4 mt-3 tema">
+                    <a href="/QuizForge/usuario.jsp" class="list-group-item list-group-item-action py-2 tema">
+                        <i class="bi bi-person-gear fa-fw me-3"></i><span>Gerenciar conta</span>
                     </a>
 
-                    <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item list-group-item-action py-2 active bg-secondary">
-                        <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3"></i><span>Quizzes</span>
+                    <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item list-group-item-action tema py-2 active bg-white">
+                        <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3 tema-white"></i ><span class="tema-white">Meus quizzes</span>
                     </a>
 
-                    <a href="<%= request.getContextPath() %>/logoutServlet" class="list-group-item list-group-item-action py-2 ripple">
+                    <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action py-2 ripple">
                         <i class="fa-solid fa-right-from-bracket fa-fw me-3 mt-3"></i><span>Log out</span>
                     </a>
                 </div>
             </div>
         </nav>
-                        
-            <form>
-            <button class="" type="submit">Mudar</button>
-            <input type="text" id="nome" placeholder="novo nome">
-            <br>
-            
-            <button class="" type="submit">Mudar</button>
-            <input type="email" id="email" placeholder="novo email">
-            <br><br>
-            
-            <button class="" type="submit">Mudar</button>
-            <input type="password" placeholder="nova senha">
-            <input type="password" placeholder="senha atual">
-            
-        </form>
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

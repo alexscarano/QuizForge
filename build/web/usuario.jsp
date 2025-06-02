@@ -24,6 +24,12 @@
               width: 280px;
               height: 80vh;
               z-index: 600;
+              border-radius: 0rem 2rem 2rem 0rem;
+            }
+            
+            .tema {
+                background-color: var(--cor_primaria);
+                color: white;
             }
 
             .sidebar .active {
@@ -40,6 +46,10 @@
               overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
             }
             
+            .tema-white {
+                color: black;
+            }
+            
             .btn-warning {
                   background-color: var(--cor_secundaria);
             }
@@ -50,18 +60,18 @@
             }
         </style>
         
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-            <div class="position-sticky">
-                <div class="list-group list-group-flush mx-3 mt-4 mt-3 ">
-                    <a href="/QuizForge/usuario.jsp" class="list-group-item list-group-item-action py-2 active bg-secondary" aria-current="true">
-                      <i class="bi bi-person-gear fa-fw me-3"></i><span>Gerenciar conta</span>
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar tema">
+            <div class="position-sticky tema">
+                <div class="list-group list-group-flush mx-3 mt-4 mt-3 tema">
+                    <a href="/QuizForge/usuario.jsp" class="list-group-item list-group-item-action py-2 active bg-white" aria-current="true">
+                        <i class="bi bi-person-gear fa-fw me-3 tema-white"></i><span class="tema-white">Gerenciar conta</span>
                     </a>
 
-                    <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item list-group-item-action py-2">
-                        <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3"></i><span>Quizzes</span>
+                    <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item list-group-item-action tema py-2">
+                        <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3"></i><span>Meus quizzes</span>
                     </a>
 
-                    <a href="<%= request.getContextPath() %>/logoutServlet" class="list-group-item list-group-item-action py-2 ripple">
+                    <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action py-2 ripple">
                         <i class="fa-solid fa-right-from-bracket fa-fw me-3 mt-3"></i><span>Log out</span>
                     </a>
                 </div>
