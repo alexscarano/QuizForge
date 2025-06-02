@@ -15,13 +15,19 @@ import util.APICredential;
 
 public class Gemini {
     
+    private static final int numQuestions = 5;
+    
     public static String getCompletion(String userTopic) throws Exception {
-        
-        String prompt = "Gere sempre 5 questões de múltipla escolha sobre " + userTopic + 
-            ". Cada questão deve ter 1 pergunta, 4 opções de resposta (A, B, C, D) e a indicação da resposta correta. " +
-            "Formate a saída como um array JSON de objetos de questão. Cada objeto de questão deve ter as chaves 'pergunta', " +
-            "'opcoes' (um array de strings), e 'respostaCorreta' (a letra da opção correta)., a resposta deve ser em JSON puro " +
-            "para evitar erros de formatações (UTF-8)";
+       
+        String prompt = "Gere **" + numQuestions + "** questões de múltipla escolha sobre **" + userTopic + "**. "
+                      + "É crucial que **sempre sejam geradas " + numQuestions + " questões**, independentemente de qualquer outra informação ou contexto fornecido."
+                      + "Cada questão deve ter: "
+                      + "1. Uma 'pergunta' (string)."
+                      + "2. Quatro 'opcoes' de resposta (um array de strings, formatadas como A) Opção, B) Opção, etc.)."
+                      + "3. A 'respostaCorreta' (uma string contendo a letra da opção correta, ex: 'A', 'B', 'C', 'D'). "
+                      + "A saída deve ser um **array JSON puro** de objetos de questão. "
+                      + "Não inclua nenhum texto adicional, cabeçalhos, introduções, explicações ou blocos de código Markdown (```json) além do JSON."
+                      + "Assegure-se que o JSON seja UTF-8 compatível.";
 
         JSONObject requestBody = new JSONObject();
         JSONArray contents = new JSONArray()
@@ -70,20 +76,24 @@ public class Gemini {
 
         String respostaIa = parts.getJSONObject(0).getString("text").trim();
         
-        //REMOVER OS MARCADORES DE CÓDIGO MARKDOWN 
+        //REMOVER OS MARCADORES DE CÓDIGO MARKDOWN CASO VENHA JUNTO
         if (respostaIa.startsWith("```json")) {
             respostaIa = respostaIa.substring(respostaIa.indexOf("```json") + "```json".length()).trim();
         }
         if (respostaIa.endsWith("```")) {
             respostaIa = respostaIa.substring(0, respostaIa.lastIndexOf("```")).trim();
         }
-
+        
+        // Remover caracteres inválidos que quebram o JSON no banco
+        respostaIa = respostaIa.replaceAll("\\u0000", "");
+        respostaIa = respostaIa.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
+        
         try {
             new JSONArray(respostaIa); // tenta fazer o parse
         } catch (Exception e) {
             throw new RuntimeException("Resposta da IA não está em formato JSON esperado: " + respostaIa);
         }
-
+        
         return respostaIa;
     }
 }

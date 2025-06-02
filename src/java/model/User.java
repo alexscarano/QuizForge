@@ -1,6 +1,11 @@
 package model;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import util.PasswordUtils;
@@ -22,6 +27,8 @@ public class User {
        + ", CONSTRAINT pk_user PRIMARY KEY (user_id)\n"
        + ")"; 
     }
+    
+    // --- Métodos Estáticos para Operações de Banco de Dados ---
     
     public static ArrayList<User> getUsers() throws Exception{
         ArrayList<User> list = new ArrayList<>();
@@ -158,7 +165,8 @@ public class User {
         stmt.close();
         conn.close();
     }
-    
+   
+    // Os construtores
       
     public User(int id, String login, String email, String password, LocalDateTime createdAt) {
         this.id = id;
@@ -168,6 +176,8 @@ public class User {
         this.createdAt = createdAt;
     }
 
+    // --- Getters e Setters ---
+    
     public int getId() {
         return id;
     }
