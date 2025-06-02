@@ -18,7 +18,7 @@
     <body>
         <style>
             body{
-                background-color: #bbbbbb;
+                background-color: #f4f4f4;
             }
             
             .acme {
@@ -40,7 +40,7 @@
                 font-weight: 500;
                 font-style: normal;
                 font-size: 1.2rem;
-                text-align: justify;
+                text-align: center;
             }
             
             .quizforge-member-role {
@@ -64,7 +64,7 @@
                 <h1 class="text-center mb-4 acme" style="color: #FF6F00">QuizForge</h1>
                 <div class="row align-items-center">
                     <div class="col-lg-7 text-start">
-                        <p class="text-justify roboto">O projeto QuizForge foi criado por um grupo de alunos de Análise e Desenvolvimento de Sistemas 4° Modelo da Fatec Praia Grande, o site QuizForge. Sua função é a geração de quizes com a utilização da IA, ao se cadastrar ao site, o usuário poderá via prompt solicitar que a IA crie um quiz, baseado no conteúdo passado via prompt. O quiz gerado poderá ser transformado em PDF caso o usuário necessite imprimi-lo</p>
+                        <p class="text-justify roboto">O projeto QuizForge foi criado por um grupo de alunos de Análise e Desenvolvimento de Sistemas 4° ciclo da Fatec Praia Grande, o site QuizForge. Sua função é a geração de quizes com a utilização da IA, ao se cadastrar ao site, o usuário poderá via prompt solicitar que a IA crie um quiz, baseado no conteúdo passado via prompt. O quiz gerado poderá ser transformado em PDF caso o usuário necessite imprimi-lo</p>
                     </div>
                     <div class="col-lg-5 text-center">
                         <img src="assets/images/logo_quizforge_trans.png" alt="Illustration of a person forging a quiz" class="img-fluid quizforge-hero-image">

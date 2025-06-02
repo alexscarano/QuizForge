@@ -19,7 +19,7 @@
               top: 11vh;
               bottom: 0;
               left: 0;
-              padding: 20vh 0 0; /* Height of navbar */
+              padding: 20vh 0 0;
               box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
               width: 280px;
               height: 80vh;
@@ -37,7 +37,7 @@
               height: calc(100vh - 48px);
               padding-top: 0.5rem;
               overflow-x: hidden;
-              overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+              overflow-y: auto;
             }
         </style>
         
