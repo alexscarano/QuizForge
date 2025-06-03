@@ -8,11 +8,26 @@
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <title>Usuário</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
         <style>
+            .acme {
+                font-family: "Acme", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .roboto {
+                font-family: "Roboto", sans-serif;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            
             .sidebar {
               position: fixed;
               top: 11vh;
@@ -56,6 +71,10 @@
             .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
                   background-color: #ee5e00;
                   box-shadow: none;
+            }
+            
+            input::placeholder{
+                font-family: "Roboto",sans-serif
             }
         </style>
         

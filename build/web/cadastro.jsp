@@ -8,10 +8,25 @@
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <title>Cadastro</title>
     </head>
     <body>
         <style>
+            .acme {
+                font-family: "Acme", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .roboto {
+                font-family: "Roboto", sans-serif;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 1.0rem;
+                text-align: center;
+            }
+            
             .btn-warning {
                 background-color: var(--cor_secundaria);
             }
@@ -19,6 +34,10 @@
             .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
                 background-color: #ee5e00;
                 box-shadow: none;
+            }
+            
+            input::placeholder{
+                font-family: "Roboto",sans-serif
             }
         </style>
         
@@ -29,7 +48,7 @@
               <div class="card shadow-lg p-4" style="max-width: 450px; width: 100vh;">
                 <div class="text-center mb-4">
                   <img src="assets/images/logo_quizforge_trans.png" alt="Logo" width="80" height="80">
-                  <h2 class="mt-2">Crie sua conta</h2>
+                  <h2 class="mt-2 acme">Crie sua conta</h2>
                 </div>
 
                 <% String errorMessage = (String) request.getAttribute("errorMessage");
@@ -41,41 +60,41 @@
 
                 <form action="RegisterServlet" method="post">
                   <div class="mb-3">
-                    <label for="login" class="form-label">
+                    <label for="login" class="form-label roboto">
                       <i class="fa-solid fa-user"></i> Usuário
                     </label>
                     <input type="text" class="form-control" id="login" name="login" placeholder="Escolha um nome de usuário" required>
                   </div>
 
                   <div class="mb-3">
-                    <label for="email" class="form-label">
+                    <label for="email" class="form-label roboto">
                       <i class="fa-solid fa-envelope"></i> Email
                     </label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
                   </div>
 
                   <div class="mb-3">
-                    <label for="password" class="form-label">
+                    <label for="password" class="form-label roboto">
                       <i class="fa-solid fa-lock"></i> Senha
                     </label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Crie uma senha segura" required>
                   </div>
 
                   <div class="mb-3">
-                    <label for="confirmPassword" class="form-label">
+                    <label for="confirmPassword" class="form-label roboto">
                       <i class="fa-solid fa-lock"></i> Confirmar Senha
                     </label>
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha" required>
                   </div>
 
                   <div class="d-grid mb-3">
-                    <button class="btn btn-success btn-warning" type="submit">
+                    <button class="btn btn-success btn-warning roboto" type="submit">
                         Cadastrar
                     </button>
                   </div>
 
                   <div class="text-center">
-                    <small>Já tem uma conta? <a href="/QuizForge/login.jsp">Faça login</a></small>
+                      <small class="roboto">Já tem uma conta? <a href="/QuizForge/login.jsp" class="roboto">Faça login</a></small>
                   </div>
                 </form>
               </div>

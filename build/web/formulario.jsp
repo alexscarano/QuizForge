@@ -8,12 +8,27 @@
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <title>Formulário</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
         
         <style>
+            .acme {
+                font-family: "Acme", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .roboto {
+                font-family: "Roboto", sans-serif;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            
             .form-template {
                 max-width: 100vh;
                 background-color: #ebebeb;
@@ -36,24 +51,45 @@
                 margin: 2rem 0rem;
             }
             
+             input::placeholder{
+                font-family: "Acme",sans-serif
+            }
+            
         </style>
         
         <div class="form-template">
-            <h2>Formulário original</h2>
+            <h2 classe="acme">Formulário original</h2>
             <div class="bloco">
-                <p>Uma pergunta de multipla escolha, usada para testar a conversão de json para html de forma satisfatoria, isso deu certo?</p>
+                <p class="roboto">Uma pergunta de multipla escolha, usada para testar a conversão de json para html de forma satisfatoria, isso deu certo?</p>
                 <form>
                     <div>
-                        <input type="radio" name="questao-1" id="a"><label>A) Primeira questão</label>
+                        <input type="radio" name="questao-1" id="a"><label classe="roboto">A) Primeira questão</label>
                     </div>
                     <div>
-                        <input type="radio" name="questao-1" id="b"><label>B) Segunda questão</label>
+                        <input type="radio" name="questao-1" id="b"><label classe="roboto">B) Segunda questão</label>
                     </div>
                     <div>
-                        <input type="radio" name="questao-1" id="c"><label>C) Terceira questão</label>
+                        <input type="radio" name="questao-1" id="c"><label classe="roboto">C) Terceira questão</label>
                     </div>
                     <div>
-                        <input type="radio" name="questao-1" id="d"><label>D) Quarta questão</label>
+                        <input type="radio" name="questao-1" id="d"><label classe="roboto">D) Quarta questão</label>
+                    </div>
+                </form>
+            </div>
+            <div class="bloco">
+                <p class="acme">Uma pergunta de multipla escolha, usada para testar a conversão de json para html de forma satisfatoria, isso deu certo?</p>
+                <form>
+                    <div>
+                        <input type="radio" name="questao-2" id="a"><label classe="roboto">A) Primeira questão</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="questao-2" id="b"><label classe="roboto">B) Segunda questão</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="questao-2" id="c"><label classe="roboto">C) Terceira questão</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="questao-2" id="d"><label classe="roboto">D) Quarta questão</label>
                     </div>
                 </form>
             </div>
@@ -61,44 +97,27 @@
                 <p>Uma pergunta de multipla escolha, usada para testar a conversão de json para html de forma satisfatoria, isso deu certo?</p>
                 <form>
                     <div>
-                        <input type="radio" name="questao-2" id="a"><label>A) Primeira questão</label>
+                        <input type="radio" name="questao-3" id="a"><label classe="roboto">A) Primeira questão</label>
                     </div>
                     <div>
-                        <input type="radio" name="questao-2" id="b"><label>B) Segunda questão</label>
+                        <input type="radio" name="questao-3" id="b"><label classe="roboto">B) Segunda questão</label>
                     </div>
                     <div>
-                        <input type="radio" name="questao-2" id="c"><label>C) Terceira questão</label>
+                        <input type="radio" name="questao-3" id="c"><label classe="roboto">C) Terceira questão</label>
                     </div>
                     <div>
-                        <input type="radio" name="questao-2" id="d"><label>D) Quarta questão</label>
-                    </div>
-                </form>
-            </div>
-            <div class="bloco">
-                <p>Uma pergunta de multipla escolha, usada para testar a conversão de json para html de forma satisfatoria, isso deu certo?</p>
-                <form>
-                    <div>
-                        <input type="radio" name="questao-3" id="a"><label>A) Primeira questão</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="questao-3" id="b"><label>B) Segunda questão</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="questao-3" id="c"><label>C) Terceira questão</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="questao-3" id="d"><label>D) Quarta questão</label>
+                        <input type="radio" name="questao-3" id="d"><label classe="roboto">D) Quarta questão</label>
                     </div>
                 </form>
             </div>
             
-            <button type="submit" class="btn btn-danger" name="action" value="deleteAccount" name="deleteAccount">
+            <button type="submit" class="btn btn-danger roboto" name="action" value="deleteAccount" name="deleteAccount">
                 <i class="bi bi-trash"></i> Ver Resultado
             </button>
-            <button type="submit" class="btn btn-danger" name="action" value="deleteAccount" name="deleteAccount">
+            <button type="submit" class="btn btn-danger roboto" name="action" value="deleteAccount" name="deleteAccount">
                 <i class="bi bi-trash"></i> Salvar
             </button>
-            <button type="submit" class="btn btn-danger m" name="action" value="deleteAccount" name="deleteAccount">
+            <button type="submit" class="btn btn-danger m roboto" name="action" value="deleteAccount" name="deleteAccount">
                 <i class="bi bi-trash"></i> Baixar PDF
             </button>
         </div>

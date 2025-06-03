@@ -55,6 +55,10 @@
             .vis {
                 border-top: 0.1rem solid black;
             }
+            
+            input::placeholder{
+                font-family: "Roboto",sans-serif
+            }
         </style>
         
         <%@include file="WEB-INF/jspf/header.jspf" %>
