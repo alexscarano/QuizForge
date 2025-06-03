@@ -47,9 +47,13 @@
                 box-shadow: none;
           }
           
+          .input-group {
+              width: 720px;
+          }
+          
           input::placeholder{
                 font-family: "Roboto",sans-serif
-            }
+           }
 
           @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }

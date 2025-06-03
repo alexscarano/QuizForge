@@ -19,6 +19,7 @@
                 font-family: "Acme", sans-serif;
                 font-weight: 400;
                 font-style: normal;
+                font-size: 1.1rem;
             }
             .roboto {
                 font-family: "Roboto", sans-serif;
@@ -26,6 +27,13 @@
                 font-style: normal;
                 font-size: 1.2rem;
                 text-align: center;
+            }
+            
+            .roboto-side {
+                font-family: "Roboto", sans-serif;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 1.1rem;
             }
             
             .sidebar {
@@ -81,15 +89,15 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar tema">
             <div class="position-sticky tema">
                 <div class="list-group list-group-flush mx-3 mt-4 mt-3 tema">
-                    <a href="/QuizForge/usuario.jsp" class="list-group-item list-group-item-action py-2 tema">
+                    <a href="/QuizForge/usuario.jsp" class="list-group-item roboto-side list-group-item-action py-2 tema">
                         <i class="bi bi-person-gear fa-fw me-3"></i><span>Gerenciar conta</span>
                     </a>
 
-                    <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item list-group-item-action tema py-2 active bg-white">
+                    <a href="/QuizForge/usuario_quiz.jsp" class="list-group-item roboto-side list-group-item-action acme tema py-2 active bg-white">
                         <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3 tema-white"></i ><span class="tema-white">Meus quizzes</span>
                     </a>
 
-                    <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action py-2 ripple">
+                    <a href="<%= request.getContextPath() %>/logoutServlet" class="tema roboto-side list-group-item list-group-item-action py-2 ripple">
                         <i class="fa-solid fa-right-from-bracket fa-fw me-3 mt-3"></i><span>Log out</span>
                     </a>
                 </div>
