@@ -1,15 +1,7 @@
 :root {
     --cor_primaria : #3c3c3c;
     --cor_secundaria : #ff6f00;
-    --cor_fundo : #f2eded;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        --cor_primaria : blue;
-        --cor_secundaria : red;
-        --cor_fundo : black;
-    }
+    --cor_fundo : #F5F2E4;
 }
 
 * {
@@ -24,10 +16,11 @@ body {
     flex-flow: column;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--cor_fundo);
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-color: #f4f4f4;
 }
 
-header {
+#nave {
     background-color: var(--cor_primaria);
     display: flex;
     justify-content: flex-start;
@@ -35,6 +28,14 @@ header {
     align-self: normal;
     gap: 2rem;
     margin-top: -0.1rem;
+    border-bottom: 0.15rem solid var(--cor_fundo);
+}
+
+.roboto-nav {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.05rem;
 }
 
 .logo {
@@ -48,6 +49,7 @@ header {
 .links a{
     text-decoration: none;
     color: var(--cor_fundo);
+    transition: ease-in 0.2s;
 }
 
 .links a:hover {
@@ -55,7 +57,6 @@ header {
     background-color: var(--cor_fundo);
     border-radius: 0.3rem;
     padding: 0.5rem;
-    transition: ease-in 0.2s;
 }
 
 .login i:hover {
@@ -83,6 +84,7 @@ footer {
     align-self: normal;
     padding: 1rem;
     color: white;
+    border-top: 0.15rem solid var(--cor_fundo);
 }
 
 footer p {

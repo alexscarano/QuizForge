@@ -1,16 +1,43 @@
-.texto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.acme {
+    font-family: "Acme", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.4rem;
+    text-align: center;
 }
 
-input {
-    width: 60vh;
-    height: 3.5vh;
-    border-radius: 0.5rem;
-    box-shadow:  -0.1rem -0.1rem 0.15rem var(--cor_secundaria) inset, 0.1rem 0.1rem 0.15rem var(--cor_secundaria) inset;
-}
+  main {
+    animation: fadeIn 1s ease-in;
+  }
 
-.caixa {
-    margin: 1rem;
-}
+  input {
+      box-shadow: none;
+  }
+
+  .btn-warning {
+        background-color: var(--cor_secundaria);
+  }
+
+  .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
+        background-color: #ee5e00;
+        box-shadow: none;
+  }
+
+  .input-group {
+      width: 720px;
+  }
+
+  input::placeholder{
+        font-family: "Roboto",sans-serif
+   }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+        

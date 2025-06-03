@@ -8,14 +8,36 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="assets/css/mudar_usuario.css">
         <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/listQuizzes.css">
-        <title>Meus Quizzes Salvos</title>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <title>Quizzes Salvos</title>
 
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
+        
+        <!-- Sidebar do usuário -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar tema">
+            <div class="position-sticky tema">
+                <div class="list-group list-group-flush mx-3 mt-4 mt-3 tema">
+                    <a href="/QuizForge/mudar_usuario.jsp" class="list-group-item list-group-item-action py-2 active bg-white roboto-side" aria-current="true">
+                        <i class="bi bi-person-gear fa-fw me-3 tema-white"></i><span class="tema-white">Gerenciar conta</span>
+                    </a>
+
+                    <a href="/QuizForge/listQuizzes" class="list-group-item list-group-item-action tema py-2 roboto-side">
+                        <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3"></i><span>Meus quizzes</span>
+                    </a>
+
+                    <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action roboto-side py-2 ripple acme">
+                        <i class="fa-solid fa-right-from-bracket fa-fw me-3 mt-3"></i><span>Log out</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
 
         <div class="container">
             <h2>Meus Quizzes Salvos</h2>

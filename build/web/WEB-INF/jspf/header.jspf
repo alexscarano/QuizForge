@@ -1,13 +1,15 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-
-<header>
+    
+<header id="nave">
     <div class="logo"><a href="/QuizForge"><img src="assets/images/logo_quizforge_trans.png" alt="Placeholder logo"></a></div>
     <div class="links">
-        <a href="/QuizForge/sobre_nos.jsp">Sobre Nós</a>
+        <a href="/QuizForge/sobre_nos.jsp" class="roboto-nav">Sobre Nós</a>
     </div>
     <div class="login">
-        <a href="/QuizForge/login.jsp"><i class="fa-thin fa-circle-user fa-2xl"></i></a>
+        <a href="/QuizForge/mudar_usuario.jsp">
+            <i class="bi bi-person-circle fa-xl"></i>
+        </a>
         <a href="<%= request.getContextPath() %>/logoutServlet"><i class="fa-solid fa-right-from-bracket fa-lg"></a></i>
     </div>
 </header>
