@@ -8,10 +8,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import org.json.JSONObject; // Importa JSONObject
-import org.json.JSONArray; // Também pode ser útil para o conteúdo do quiz
-import org.json.JSONException; // Para tratamento de erros de parsing JSON
-import model.DBConnection;// Assumindo que sua classe de conexão está em util.DatabaseConnection
+import model.DBConnection;
 
 public class Quiz {
     private int id; 
@@ -20,14 +17,13 @@ public class Quiz {
     private LocalDateTime createdAt;
     private int userId;
 
-   
     // --- Métodos Estáticos para Operações de Banco de Dados ---
 
     public static String getCreateStatement() {
         return "CREATE TABLE IF NOT EXISTS quiz(\n"
                 + "  quiz_id INT AUTO_INCREMENT \n"
                 + ", prompt TEXT \n"
-                + ", content JSON \n" 
+                + ", content LONGTEXT \n" 
                 + ", created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n"
                 + ", user_id INT\n"
                 + ", CONSTRAINT pk_quiz PRIMARY KEY (quiz_id)\n"
@@ -35,8 +31,7 @@ public class Quiz {
                 + ")";
     }
 
-    
-        public static ArrayList<Quiz> getQuizzes() throws Exception {
+    public static ArrayList<Quiz> getQuizzes() throws Exception {
         ArrayList<Quiz> list = new ArrayList<>();
         Connection conn = DBConnection.getConnection();
         Statement stmt = conn.createStatement();
@@ -49,8 +44,34 @@ public class Quiz {
             Timestamp ts = rs.getTimestamp("created_at");
             LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
             int userId = rs.getInt("user_id");
-
             list.add(new Quiz(id, prompt, content, createdAt, userId));
+        }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            return list;
+    }
+
+  
+        
+    public static ArrayList<Quiz> getQuizzesByUserId(int userId) throws Exception {
+        ArrayList<Quiz> list = new ArrayList<>();
+        Connection conn = DBConnection.getConnection();
+        String sql = "SELECT * FROM quiz WHERE user_id =  ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, userId);
+        ResultSet rs = stmt.executeQuery(); 
+        
+        while (rs.next()) {
+            int id = rs.getInt("quiz_id");
+            String prompt = rs.getString("prompt");
+            String content = rs.getString("content");
+            Timestamp ts = rs.getTimestamp("created_at");
+            LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
+            int fetchedUserId = rs.getInt("user_id");
+
+            list.add(new Quiz(id, prompt, content, createdAt, fetchedUserId));
         }
 
         rs.close();
@@ -59,6 +80,27 @@ public class Quiz {
 
         return list;
     }
+           
+       
+    public static Quiz getQuizContentById(int id) throws Exception {
+        Connection conn = DBConnection.getConnection();
+        String sql = "SELECT content FROM quiz WHERE quiz_id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            String content = rs.getString("content");
+            return new Quiz(content);
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+        return null;
+    }
+    
 
     public static Quiz getQuizById(int id) throws Exception {
         Connection conn = DBConnection.getConnection();
@@ -111,7 +153,7 @@ public class Quiz {
         conn.close();
     }
 
-    public static void deleteQuiz(int id) throws Exception {
+    public static boolean deleteQuiz(int id) throws Exception {
         Connection conn = DBConnection.getConnection();
         String sql = "DELETE FROM quiz WHERE quiz_id = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -120,6 +162,7 @@ public class Quiz {
         stmt.execute();
         stmt.close();
         conn.close();
+        return true;
     }
     
     // --- Getters e Setters ---
@@ -167,7 +210,12 @@ public class Quiz {
     // Construtor padrão
     public Quiz() {
     }
-
+    
+    // Construtor para conteudo
+    public Quiz(String content) {
+        this.content = content;
+    }
+    
     // Construtor para criar um novo quiz antes de salvar no banco
     public Quiz(String prompt, String content, int userId) {
         this.prompt = prompt;

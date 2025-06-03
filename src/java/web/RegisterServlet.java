@@ -20,11 +20,12 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String login = request.getParameter("login").trim();
+        String login = request.getParameter("login").trim().toLowerCase();
         String email = request.getParameter("email").trim();
         String password = request.getParameter("password").trim();
         String confirmPassword = request.getParameter("confirmPassword").trim();
         
+       
         if (login == null || login.trim().isEmpty() ||
             email == null || email.trim().isEmpty() ||
             password == null || password.trim().isEmpty() ||
@@ -33,12 +34,22 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
             return;
         }
-         
+        
+        String trimmedLogin = login.trim();
+        
+        if (trimmedLogin.contains(" ")){
+            request.setAttribute("errorMessage", "O login não deve ter espaço.");
+            request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+            return;
+        }
+        
         if (!password.equals(confirmPassword)) {
             request.setAttribute("errorMessage", "As senhas não coincidem.");
             request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
             return;
         }
+        
+        login = login.trim().replaceAll("\\s+", "").toLowerCase();
         
         try {
             User.insertUser(login, email, password);

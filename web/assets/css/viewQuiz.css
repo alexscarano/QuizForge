@@ -1,0 +1,38 @@
+.form-template {
+    max-width: 100vh;
+    background-color: #ebebeb;
+    padding: 0rem 2rem;
+    margin: 2rem auto;
+}
+
+.form-template h2 {
+    margin: 2rem 0rem;
+}
+
+.bloco {
+    margin-bottom: 3rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+.bloco p {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.bloco div {
+    margin: 0.5rem 0;
+}
+
+
+.bloco label {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: #f5f5f5;
+    margin-left: 0.5rem;
+}
