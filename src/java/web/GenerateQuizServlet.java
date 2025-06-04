@@ -33,8 +33,14 @@ public class GenerateQuizServlet extends HttpServlet {
 
         String rawJsonResponseFromGemini = null;
         try {
+       
             rawJsonResponseFromGemini = Gemini.getCompletion(quizTopic);
             
+            HttpSession session = request.getSession(); // Pega a sessão existente ou cria uma nova
+            session.setAttribute("quizQuestionsJson", rawJsonResponseFromGemini); // <<< ESTA LINHA É CRUCIAL!
+            session.setAttribute("quizTopic", quizTopic);                 // <<< ESTA LINHA É CRUCIAL!
+            session.setAttribute("currentQuizId", null);
+ 
             JSONArray questions = new JSONArray(rawJsonResponseFromGemini);
             
             Map<Integer, String> correctAnswers = new HashMap<>();
@@ -44,12 +50,12 @@ public class GenerateQuizServlet extends HttpServlet {
                 correctAnswers.put(i, correctAnswer);
             }
 
-            HttpSession session = request.getSession();
             session.setAttribute("respostasCorretas", correctAnswers);
 
             request.setAttribute("quizQuestionsJson", rawJsonResponseFromGemini);
             request.setAttribute("quizTopic", quizTopic);
 
+            
             request.getRequestDispatcher("/formulario.jsp").forward(request, response);
 
         } catch (Exception e) {

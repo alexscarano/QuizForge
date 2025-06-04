@@ -119,8 +119,10 @@ public class ProfileUpdateServlet extends HttpServlet {
                     }                 
                     break;        
             }
-            // redireciona de volta à tela de perfil
-            response.sendRedirect(request.getContextPath() + "/index.jsp"); 
+            // mostra mensagem de dado atualizado
+            request.setAttribute("successMessage", "Dado atualizado com sucesso.");
+            request.getRequestDispatcher("mudar_usuario.jsp").forward(request, response);  
+            
         } catch (Exception e) {
             request.setAttribute("errorMessage", "Erro ao atualizar dados: " + e.getMessage());
             request.getRequestDispatcher("mudar_usuario.jsp").forward(request, response);;

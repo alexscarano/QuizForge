@@ -33,6 +33,17 @@
                 String quizQuestionsJson = (String) request.getAttribute("quizQuestionsJson");
                 String quizTopic = (String) request.getAttribute("quizTopic");
 
+                // >>> IMPORTANTE: Se o quiz não está nos atributos da requisição (por exemplo, após um redirect),
+                // tenta pegar da sessão. Isso garante que a JSP tenha os dados para EXIBIR.
+                // Mas, para salvar, o servlet pegará DIRETAMENTE da sessão.
+                if (quizQuestionsJson == null || quizQuestionsJson.trim().isEmpty()) {
+                    quizQuestionsJson = (String) session.getAttribute("quizQuestionsJson");
+                }
+                if (quizTopic == null || quizTopic.trim().isEmpty()) {
+                    quizTopic = (String) session.getAttribute("quizTopic");
+                }
+
+
                 if (quizQuestionsJson == null || quizQuestionsJson.trim().isEmpty()) {
             %>
                 <h2>Erro ao Gerar Quiz</h2>
@@ -56,7 +67,6 @@
             %>
                 <h2>Quiz sobre: <%= quizTopic %></h2>
 
-                <!-- >>> INÍCIO FORMULÁRIO ÚNICO <<< -->
                 <form method="post">
                     <%
                         for (int i = 0; i < questions.length(); i++) {
@@ -87,30 +97,26 @@
                         }
                     %>
 
-                    <input type="hidden" name="quizQuestionsJson" value='<%= quizQuestionsJson %>'>
-                    <input type="hidden" name="quizTopic" value='<%= quizTopic %>'>
-
                     <div class="btn-group-custom">
-                        <!-- Ver Resultado -->
                         <button type="submit" formaction="<%= request.getContextPath() %>/submitQuiz" class="btn btn-primary">
                             <i class="fas fa-check"></i> Ver Resultado
                         </button>
 
-                        <!-- Salvar -->
                         <button type="submit" formaction="<%= request.getContextPath() %>/saveQuiz" class="btn btn-secondary">
                             <i class="fas fa-save"></i> Salvar
                         </button>
 
-                        <!-- Baixar PDF -->
                         <button type="submit" formaction="<%= request.getContextPath() %>/downloadPdf" formmethod="get" class="btn btn-info">
                             <i class="fas fa-download"></i> Baixar PDF
                         </button>
                     </div>
                 </form>
-                <!-- >>> FIM DO FORMULÁRIO <<< -->
-            <%
+                            
+                <%
                         }
                     } catch (Exception e) {
+                        // Sempre imprima a stack trace para depuração no servidor
+                        e.printStackTrace(); 
             %>
                 <h2>Erro de Processamento</h2>
                 <div class="alert alert-danger" role="alert">

@@ -40,8 +40,6 @@
         </nav>
 
         <div class="container">
-            <h2>Meus Quizzes Salvos</h2>
-
             <%
                 String errorMessage = (String) request.getAttribute("errorMessage");
                 String successMessage = (String) request.getAttribute("successMessage");

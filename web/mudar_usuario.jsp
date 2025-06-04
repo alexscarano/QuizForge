@@ -50,7 +50,17 @@
             <%
                 }
             %>
-
+            <%
+                String successMessage = (String) request.getAttribute("successMessage");
+                if (successMessage != null) {
+            %>
+                <div class="alert alert-success text-center" role="alert">
+                    <%= successMessage %>
+                </div>
+            <%
+                }
+            %>
+            
             <!-- Alterar login -->
             <div class="card mb-4 shadow-sm">
                 <div class="card-body">
