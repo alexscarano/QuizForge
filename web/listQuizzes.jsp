@@ -10,12 +10,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
-        <link rel="stylesheet" href="assets/css/mudar_usuario.css">
+        <link rel="stylesheet" href="assets/css/listQuizzes.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <title>Quizzes Salvos</title>
-
+        <title>QuizForge - Quizzes Salvos</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
@@ -24,15 +23,15 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar tema">
             <div class="position-sticky tema">
                 <div class="list-group list-group-flush mx-3 mt-4 mt-3 tema">
-                    <a href="/QuizForge/mudar_usuario.jsp" class="list-group-item list-group-item-action py-2 active bg-white roboto-side" aria-current="true">
-                        <i class="bi bi-person-gear fa-fw me-3 tema-white"></i><span class="tema-white">Gerenciar conta</span>
+                    <a href="/QuizForge/mudar_usuario.jsp" class="list-group-item list-group-item-action tema py-2 roboto-side">
+                        <i class="bi bi-person-gear fa-fw me-3"></i><span>Gerenciar conta</span>
                     </a>
 
-                    <a href="/QuizForge/listQuizzes" class="list-group-item list-group-item-action tema py-2 roboto-side">
-                        <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3"></i><span>Meus quizzes</span>
+                    <a href="/QuizForge/listQuizzes" class="list-group-item list-group-item-action py-2 active bg-white roboto-side" aria-current="true">
+                        <i class="fa-solid fa-wand-magic-sparkles tema-white fa-fw me-3 mt-3"></i><span class="tema-white">Meus quizzes</span>
                     </a>
 
-                    <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action roboto-side py-2 ripple acme">
+                    <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action roboto-side py-2 ripple">
                         <i class="fa-solid fa-right-from-bracket fa-fw me-3 mt-3"></i><span>Log out</span>
                     </a>
                 </div>
@@ -72,14 +71,14 @@
             %>
                     <table class="table table-striped table-hover">
                         <thead class="table-dark">
-                            <tr>
+                            <tr class="title">
                                 <th scope="col">ID</th>
                                 <th scope="col">Tema do Quiz</th>
                                 <th scope="col">Data de Criação</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table-body">
                             <%
                                 int quizIndex = 0;
                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -93,7 +92,7 @@
                                         <%-- Botão para "Consultar Formulário" - Simula refazer o quiz --%>
                                         <form action="<%= request.getContextPath() %>/consultQuiz" method="get" style="display:inline-block;">
                                             <input type="hidden" name="quizId" value="<%= quiz.getId() %>">
-                                            <button type="submit" class="btn btn-sm btn-primary" title="Consultar Formulário">
+                                            <button type="submit" class="btn btn-sm btn-success" title="Consultar Formulário">
                                                 <i class="fas fa-eye"></i> Consultar
                                             </button>
                                         </form>
@@ -125,6 +124,7 @@
                 } // Fim do if (quizzes == null || quizzes.isEmpty())
             %>
         </div>
+        
 
         <%@include file="WEB-INF/jspf/footer.jspf" %>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-e9sGFM9f3X6S5r9I01h9X6y6aR6q2aQ9t0p1l1C7p2n8D5r0q3a9Z9t2w8o7a6" crossorigin="anonymous"></script>

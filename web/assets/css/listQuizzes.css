@@ -1,17 +1,115 @@
 .container {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-right: 20vh;
+    border: solid 0.1rem black;
+    padding: 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
+
 .table th, .table td {
     vertical-align: middle;
+    padding-bottom: 1rem;
+    max-width: 12rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
+
+.table {
+    padding: 0;
+    margin: 0;
+}
+
 .action-buttons form {
     display: inline-block;
-    margin-right: 5px; /* Espaçamento entre os botões */
+    margin-right: 1rem; /* Espaçamento entre os botões */
 }
+
+.title {
+    text-align: center;
+}
+
+.table-body {
+    text-align: center;
+}
+
 .action-buttons .btn {
     padding: 0.375rem 0.75rem; /* Botões menores */
     font-size: 0.875rem;
     line-height: 1.5;
     border-radius: 0.2rem;
+}
+
+.acme {
+    font-family: "Acme", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.roboto-side {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 11vh;
+  bottom: 0;
+  left: 0;
+  padding: 20vh 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  height: 80vh;
+  z-index: 600;
+  border-radius: 0rem 1.5rem 1.5rem 0rem;
+}
+
+.tema {
+    background-color: var(--cor_primaria);
+    color: white;
+}
+
+.tema-btn {
+    color: white;
+}
+
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.tema-white {
+    color: black;
+}
+
+.btn-warning {
+      background-color: var(--cor_secundaria);
+}
+
+.btn-warning:hover, .btn-warning:active, .btn-warning:visited {
+      background-color: #ee5e00;
+      box-shadow: none;
+}
+
+input::placeholder{
+    font-family: "Roboto",sans-serif
 }

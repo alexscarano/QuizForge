@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gerenciar Conta</title>
+    <title>QuizForge - Gerenciar Conta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -27,7 +27,7 @@
                 <i class="fa-solid fa-wand-magic-sparkles fa-fw me-3 mt-3"></i><span>Meus quizzes</span>
             </a>
 
-            <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action roboto-side py-2 ripple acme">
+            <a href="<%= request.getContextPath() %>/logoutServlet" class="tema list-group-item list-group-item-action roboto-side py-2 ripple">
                 <i class="fa-solid fa-right-from-bracket fa-fw me-3 mt-3"></i><span>Log out</span>
             </a>
         </div>
