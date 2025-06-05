@@ -12,7 +12,7 @@ Dentro do QuizForge, com o usuário cadastrado no site, ele poderá enviar um pr
 
 * [Como Usar](#como_usar)
 * [Membros do Grupo](#membros_grupo)
-* [Técnologias Usadas](#tecnologias)
+* [Tecnologias Usadas](#tecnologias)
 
 <hr>
 <br>
@@ -29,7 +29,7 @@ Quando você entra no site é necessário se cadastrar para realizar os prompts,
 
 * Alexandre Scarano <https://github.com/alexscarano>
 * Gabriel Altino de Oliveira Sousa <https://github.com/BielAlt>
-* Heitor teixeira Martins dos Santos <https://github.com/Normilando>
+* Heitor Teixeira Martins dos Santos <https://github.com/Normilando>
 * Sey Forasteira <https://github.com/SeyMotor>
 
 <hr>
