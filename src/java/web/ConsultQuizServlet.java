@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Quiz; 
 
-@WebServlet(name = "ConsultQuizServlet", urlPatterns = {"/consultQuiz"}) // Exemplo de URL pattern
+@WebServlet(name = "ConsultQuizServlet", urlPatterns = {"/consultQuiz"}) 
 public class ConsultQuizServlet extends HttpServlet {
 
     @Override
@@ -44,7 +44,9 @@ public class ConsultQuizServlet extends HttpServlet {
                     session.setAttribute("quizQuestionsJson", quiz.getContent());
                     session.setAttribute("quizTopic", quiz.getPrompt());
                     session.setAttribute("currentQuizId", quiz.getId()); 
-
+                    
+                    request.getRequestDispatcher("/viewQuiz.jsp").forward(request, response); 
+                    
                 } else if (quiz != null && quiz.getUserId() != userId) {
                     request.getRequestDispatcher("/listQuizzes").forward(request, response); 
                     return;
@@ -59,7 +61,6 @@ public class ConsultQuizServlet extends HttpServlet {
                
             }
         } else {
-            // Se não houver quizId na URL (ex: acessou consultQuiz sem ID)
             request.getRequestDispatcher("/listQuizzes").forward(request, response);
             return;
         }
