@@ -1,4 +1,51 @@
-.foto-rosto {
-    width: 96px;
-    height: 96px;
+body{
+    background-color: #f4f4f4;
+}
+
+.acme {
+    font-family: "Acme", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.member-photo-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #ff7c00; /* Orange color from the image */
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.roboto-just {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+
+.quizforge-member-role {
+    text-align: center;
+}
+
+.linha {
+    height: 5vh;
+    width: 100%;
+}
+
+.vis {
+    border-top: 0.1rem solid black;
+}
+
+input::placeholder{
+    font-family: "Roboto",sans-serif
 }

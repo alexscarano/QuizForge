@@ -1,29 +1,25 @@
-.cadastro {
-    background-color: bisque;
-    padding: 4rem;
-    border-radius: 1rem;
-    padding-left: 7rem;
-    padding-right: 7rem;
+.acme {
+    font-family: "Acme", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
-
-.titulo {
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.0rem;
     text-align: center;
-    margin-bottom: 1.5rem;
 }
 
-.campo-texto {
-    display: flex;
-    flex-direction: column;
+.btn-warning {
+      background-color: var(--cor_secundaria);
 }
 
-.campo-texto input {
-    margin-bottom: 1rem;
+.btn-warning:hover, .btn-warning:active, .btn-warning:visited {
+      background-color: #ee5e00;
+      box-shadow: none;
 }
 
-.confirmar {
-    margin-bottom: 0.7rem;
-}
-
-button {
-    margin-bottom: 2rem;
+input::placeholder{
+    font-family: "Roboto",sans-serif
 }

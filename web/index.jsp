@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>QuizForge - Gerar Prova</title>
+    <title>QuizForge - Página inicial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -26,7 +26,7 @@
 
             <form action="generateQuiz" method="POST" class="mx-auto">
                 <div class="input-group shadow-sm">
-                    <input type="text" name="captureQuiz" class="form-control form-control-lg" placeholder="Ex: História do Brasil, Java" required>
+                    <input type="text" name="captureQuiz" class="form-control form-control-lg" maxlength="70" placeholder="Ex: História do Brasil, Java" required>
                     <button class="btn btn-warning btn-lg roboto" type="submit">
                         <i class="fas fa-magic me-1"></i> Gerar
                     </button>

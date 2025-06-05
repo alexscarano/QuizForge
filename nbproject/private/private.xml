@@ -7,6 +7,11 @@
             <file>file:/home/gekki/Documentos/GitHub/QuizForge/web/assets/css/mudar_usuario.css</file>
             <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/web/ListQuizzesServlet.java</file>
             <file>file:/home/gekki/Documentos/GitHub/QuizForge/web/listQuizzes.jsp</file>
+            <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/util/APICredential.java</file>
+            <file>file:/home/gekki/Documentos/GitHub/QuizForge/nbproject/build-impl.xml</file>
+            <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/ia/Gemini.java</file>
+            <file>file:/home/gekki/Documentos/GitHub/QuizForge/web/formulario.jsp</file>
+            <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/web/SaveQuizServlet.java</file>
         </group>
     </open-files>
 </project-private>
