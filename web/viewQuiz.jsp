@@ -24,8 +24,7 @@
                 // Recupera os dados do quiz do request (vindos do ConsultQuizServlet)
                 String quizQuestionsJson = (String) request.getAttribute("quizQuestionsJson");
                 String quizTopic = (String) request.getAttribute("quizTopic");
-                Integer currentQuizId = (Integer) request.getAttribute("currentQuizId");
-
+                             
                 String errorMessage = (String) request.getAttribute("errorMessage");
                 if (errorMessage != null) {
             %>

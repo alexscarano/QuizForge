@@ -5,7 +5,8 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 import java.util.Date;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Statement;
 import model.Quiz;
 import model.User;
 
@@ -35,7 +36,7 @@ public class AppListener implements ServletContextListener{
             
             s.execute(User.getCreateStatement());
             initializeLog += "User table has been created or already exists\n";
-           
+                       
             if (User.getUsers().isEmpty()){
                 initializeLog += "Adding default users...\n";
                 User.insertUser("admin", "alexandrescarano@gmail.com", "123");
@@ -44,6 +45,8 @@ public class AppListener implements ServletContextListener{
             initializeLog += "Creating Quiz table if not exists...\n";
             s.execute(Quiz.getCreateStatement());
             initializeLog += "Quiz table has been created or already exists\n";
+            s.execute(Quiz.alterContentColumnCharset());
+            initializeLog += "Altering column 'content' charset";
             
         } catch (Exception e) {
             initializeLog += "Error: \n" + e.getMessage();

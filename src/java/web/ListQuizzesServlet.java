@@ -50,7 +50,7 @@ public class ListQuizzesServlet extends HttpServlet {
       
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Um Servlet para listar os quizzes já feitos pelo usuário";
+    }
 
 }

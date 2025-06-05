@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession; // Importação da classe HttpSession
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "DeleteQuizServlet", urlPatterns = {"/deleteQuiz"})
@@ -59,8 +59,7 @@ public class DeleteQuizServlet extends HttpServlet {
             session.setAttribute("errorMessage", "Erro ao excluir o quiz: " + e.getMessage());
         }
 
-        // 3. Redireciona sempre para o ListQuizzesServlet usando GET
-        // Isso força o navegador a fazer uma nova requisição GET para /listQuizzes
+        // forçando o navegador a fazer uma nova requisição GET para /listQuizzes
         response.sendRedirect(request.getContextPath() + "/listQuizzes");
     }
 

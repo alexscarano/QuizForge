@@ -132,7 +132,7 @@ public class ProfileUpdateServlet extends HttpServlet {
     
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Um servlet responsável por operações de update de dados do usuário";
     }// </editor-fold>
 
 }

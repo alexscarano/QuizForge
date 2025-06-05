@@ -43,6 +43,7 @@
             <%
                 String errorMessage = (String) request.getAttribute("errorMessage");
                 String successMessage = (String) request.getAttribute("successMessage");
+                
                 if (errorMessage != null) {
             %>
                     <div class="alert alert-danger" role="alert">
@@ -97,13 +98,14 @@
                                             </button>
                                         </form>
 
-                                        <%-- Botão para "Baixar PDF" (Ainda precisa de um Servlet) --%>
-                                        <form action="<%= request.getContextPath() %>/downloadPdf" method="get" style="display:inline-block;">
-                                            <input type="hidden" name="quizId" value="<%= quiz.getId() %>">
-                                            <button type="submit" class="btn btn-sm btn-info" title="Baixar Quiz em PDF">
-                                                <i class="fas fa-file-pdf"></i> PDF
-                                            </button>
-                                        </form>
+                                        <%-- Botão para "Baixar PDF" --%>
+                                    <form action="<%= request.getContextPath() %>/downloadPdf" method="get" class="d-inline-block">
+                                        <input type="hidden" name="quizId" value="<%= quiz.getId() %>">
+                                        <input type="hidden" name="includeCorrectAnswers" value="true"> <%-- <<< ESTA LINHA É A CHAVE! --%>
+                                        <button type="submit" class="btn btn-info" title="Baixar PDF com Respostas">
+                                            <i class="fas fa-file-pdf"></i> Baixar PDF com Respostas
+                                        </button>
+                                    </form>
 
                                         <%-- Botão para "Excluir Quiz" (Ainda precisa de um Servlet) --%>
                                         <form action="<%= request.getContextPath() %>/deleteQuiz" method="post" style="display:inline-block;" onsubmit="return confirm('Tem certeza que deseja excluir este quiz (ID: <%= quiz.getId() %>)? Esta ação não pode ser desfeita.');">

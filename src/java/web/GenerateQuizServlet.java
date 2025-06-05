@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package web;
 
 import ia.Gemini;
@@ -36,10 +32,10 @@ public class GenerateQuizServlet extends HttpServlet {
        
             rawJsonResponseFromGemini = Gemini.getCompletion(quizTopic);
             
-            HttpSession session = request.getSession(); // Pega a sessão existente ou cria uma nova
-            session.setAttribute("quizQuestionsJson", rawJsonResponseFromGemini); // <<< ESTA LINHA É CRUCIAL!
-            session.setAttribute("quizTopic", quizTopic);                 // <<< ESTA LINHA É CRUCIAL!
-            session.setAttribute("currentQuizId", null);
+            HttpSession session = request.getSession();
+            session.setAttribute("quizQuestionsJson", rawJsonResponseFromGemini); 
+            session.setAttribute("quizTopic", quizTopic);                
+            session.setAttribute("currentQuizId", null); // Pode ser usado futuramente
  
             JSONArray questions = new JSONArray(rawJsonResponseFromGemini);
             
@@ -73,7 +69,7 @@ public class GenerateQuizServlet extends HttpServlet {
     
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet para gerar quizzes";
     }// </editor-fold>
 
 }

@@ -32,6 +32,7 @@
             <%
                 String quizQuestionsJson = (String) request.getAttribute("quizQuestionsJson");
                 String quizTopic = (String) request.getAttribute("quizTopic");
+                Integer quizId = (Integer) request.getAttribute("quizId");
 
                 // >>> IMPORTANTE: Se o quiz não está nos atributos da requisição (por exemplo, após um redirect),
                 // tenta pegar da sessão. Isso garante que a JSP tenha os dados para EXIBIR.
@@ -108,15 +109,19 @@
 
                         <button type="submit" formaction="<%= request.getContextPath() %>/downloadPdf" formmethod="get" class="btn btn-info">
                             <i class="fas fa-download"></i> Baixar PDF
+                            <% if (quizId != null) { %>
+                                <input type="hidden" name="quizId" value="<%= quizId %>">
+                            <% } %>
+                            <%-- Não adicionamos um campo hidden para 'includeCorrectAnswers' aqui --%>
+
                         </button>
+                         
                     </div>
                 </form>
                             
                 <%
                         }
                     } catch (Exception e) {
-                        // Sempre imprima a stack trace para depuração no servidor
-                        e.printStackTrace(); 
             %>
                 <h2>Erro de Processamento</h2>
                 <div class="alert alert-danger" role="alert">

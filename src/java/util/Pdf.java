@@ -53,17 +53,16 @@ public class Pdf {
                             .setBold()
                             .setMarginBottom(5));
 
-                    // Lista de Opções
+                    // Lista de Opções dentro do quiz
                     List optionsList = new List();
                     optionsList.setListSymbol("   "); // Indentação
                     for (int j = 0; j < opcoesArray.length(); j++) {
                         String optionText = opcoesArray.getString(j);
-                        String optionLetter = String.valueOf((char) ('A' + j));
-                        optionsList.add(new ListItem(optionLetter + ") " + optionText));
+                        optionsList.add(new ListItem(optionText));
                     }
                     document.add(optionsList.setMarginLeft(20).setMarginBottom(10));
 
-                    // Resposta Correta (opcional)
+                    // Resposta Correta (opcional, será somente implementado na consulta do quiz futuramente)
                     if (includeCorrectAnswers && question.has("respostaCorreta")) {
                         String respostaCorreta = question.getString("respostaCorreta");
                         String displayedCorrectAnswer = "";
@@ -71,9 +70,9 @@ public class Pdf {
                         if (respostaCorreta.length() == 1 && Character.isLetter(respostaCorreta.charAt(0))) {
                             int correctIndex = respostaCorreta.charAt(0) - 'A';
                             if (correctIndex >= 0 && correctIndex < opcoesArray.length()) {
-                                displayedCorrectAnswer = respostaCorreta + " - " + opcoesArray.getString(correctIndex);
+                                displayedCorrectAnswer = opcoesArray.getString(correctIndex);
                             } else {
-                                displayedCorrectAnswer = respostaCorreta + " (Opção inválida)";
+                                displayedCorrectAnswer =  "(Opção inválida)";
                             }
                         } else {
                             displayedCorrectAnswer = respostaCorreta;
@@ -94,8 +93,6 @@ public class Pdf {
             document.add(new Paragraph("Erro ao carregar questões do quiz. Conteúdo JSON inválido.")
                     .setFontSize(12)
                     .setFontColor(ColorConstants.RED));
-            System.err.println("Erro ao parsear JSON no QuizPdfGenerator: " + e.getMessage());
-            e.printStackTrace();
         }
 
         document.close();

@@ -31,5 +31,9 @@ public class TestarConexao extends HttpServlet {
         }
        
     }
+    
+    public String getServletInfo() {
+        return "Testar conexão com bd (remover futuramente)";
+    }
 
 }

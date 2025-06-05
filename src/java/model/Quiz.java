@@ -30,7 +30,11 @@ public class Quiz {
                 + ", CONSTRAINT fk_quiz_user FOREIGN KEY (user_id) REFERENCES user (user_id)\n"
                 + ")";
     }
-
+    
+    public static String alterContentColumnCharset() {
+        return "ALTER TABLE quiz MODIFY COLUMN content LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
+    }
+   
     public static ArrayList<Quiz> getQuizzes() throws Exception {
         ArrayList<Quiz> list = new ArrayList<>();
         Connection conn = DBConnection.getConnection();
