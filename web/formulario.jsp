@@ -10,125 +10,129 @@
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/formulario.css">
-        <title>Quiz Gerado</title>
+        <title>Responder Quiz</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
 
         <div class="form-template">
+            <%-- Exibe mensagens de sucesso (você tinha um erro, não erro-message) --%>
             <%
                 String successMessage = (String) request.getAttribute("successMessage");
+                String errorMessage = (String) request.getAttribute("errorMessage"); // Adiciona o errorMessage aqui
                 if (successMessage != null && !successMessage.trim().isEmpty()) {
             %>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fas fa-check-circle"></i>
-                    <%= successMessage %>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fas fa-check-circle"></i>
+                        <%= successMessage %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+            <%
+                }
+                if (errorMessage != null && !errorMessage.trim().isEmpty()) { // Adiciona exibição de erro
+            %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <%= errorMessage %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
             <%
                 }
             %>
-            
+             
             <%
                 String quizQuestionsJson = (String) request.getAttribute("quizQuestionsJson");
                 String quizTopic = (String) request.getAttribute("quizTopic");
-                Integer quizId = (Integer) request.getAttribute("quizId");
+                Integer quizId = (Integer) request.getAttribute("quizId"); // Carrega da request primeiro
 
-                // >>> IMPORTANTE: Se o quiz não está nos atributos da requisição (por exemplo, após um redirect),
-                // tenta pegar da sessão. Isso garante que a JSP tenha os dados para EXIBIR.
-                // Mas, para salvar, o servlet pegará DIRETAMENTE da sessão.
+                // >>> IMPORTANTE: Se o quiz não está nos atributos da requisição (por exemplo, após um redirect
+                // ou um erro no SubmitQuizServlet que fez forward de volta), tenta pegar da sessão.
                 if (quizQuestionsJson == null || quizQuestionsJson.trim().isEmpty()) {
                     quizQuestionsJson = (String) session.getAttribute("quizQuestionsJson");
                 }
                 if (quizTopic == null || quizTopic.trim().isEmpty()) {
                     quizTopic = (String) session.getAttribute("quizTopic");
                 }
-
+                // Adicione o fallback para quizId também
+                if (quizId == null) {
+                    quizId = (Integer) session.getAttribute("currentQuizId"); // ID do último quiz gerado/salvo na sessão
+                }
 
                 if (quizQuestionsJson == null || quizQuestionsJson.trim().isEmpty()) {
             %>
-                <h2>Erro ao Gerar Quiz</h2>
-                <div class="alert alert-danger" role="alert">
-                    Não foi possível carregar as questões do quiz. A IA pode não ter gerado uma resposta válida.
-                    <a href="<%= request.getContextPath() %>/index.jsp" class="alert-link">Tentar novamente</a>.
-                </div>
+                    <div class="alert alert-warning" role="alert">
+                        Nenhum quiz foi gerado ou carregado. <a href="<%= request.getContextPath() %>/index.jsp" class="alert-link">Crie um novo quiz</a>.
+                    </div>
             <%
                 } else {
+                    JSONArray questions = null;
                     try {
-                        JSONArray questions = new JSONArray(quizQuestionsJson);
-                        if (questions.length() == 0) {
+                        questions = new JSONArray(quizQuestionsJson);
+                    } catch (Exception e) {
+                        System.err.println("Erro ao parsear JSON do quiz no formulario.jsp: " + e.getMessage());
+                        e.printStackTrace();
             %>
-                <h2>Quiz Vazio</h2>
-                <div class="alert alert-info" role="alert">
-                    A IA não gerou nenhuma questão para o tópico "<strong><%= quizTopic %></strong>". Tente um tópico diferente.
-                    <a href="<%= request.getContextPath() %>/index.jsp" class="alert-link">Criar novo quiz</a>.
-                </div>
-            <%
-                        } else {
-            %>
-                <h2>Quiz sobre: <%= quizTopic %></h2>
-
-                <form method="post">
-                    <%
-                        for (int i = 0; i < questions.length(); i++) {
-                            JSONObject question = questions.getJSONObject(i);
-                            String pergunta = question.getString("pergunta");
-                            JSONArray opcoesArray = question.getJSONArray("opcoes");
-                    %>
-                    <div class="bloco">
-                        <p><%= (i + 1) %>. <%= pergunta %></p>
-                        <div>
-                            <%
-                                for (int j = 0; j < opcoesArray.length(); j++) {
-                                    String optionText = opcoesArray.getString(j);
-                                    String optionLetter = String.valueOf((char) ('A' + j));
-                            %>
-                                <div>
-                                    <input type="radio" name="q_<%= i %>" id="q_<%= i %>_<%= optionLetter %>" value="<%= optionLetter %>" required>
-                                    <label for="q_<%= i %>_<%= optionLetter %>"><%= optionText %></label>
-                                </div>
-                            <%
-                                }
-                            %>
+                        <div class="alert alert-danger" role="alert">
+                            Ocorreu um erro ao carregar as perguntas do quiz. Por favor, tente novamente.
                         </div>
-                        <input type="hidden" name="q_<%= i %>_question_text" value="<%= pergunta %>">
-                        <input type="hidden" name="q_<%= i %>_options_json" value="<%= opcoesArray.toString() %>">
-                    </div>
-                    <%
-                        }
-                    %>
+            <%
+                        questions = null; // Garante que o loop não será executado
+                    }
 
-                    <div class="btn-group-custom">
-                        <button type="submit" formaction="<%= request.getContextPath() %>/submitQuiz" class="btn btn-primary">
-                            <i class="fas fa-check"></i> Ver Resultado
-                        </button>
+                    if (questions != null && questions.length() > 0) {
+            %>
+                        <h2 class="quiz-title">Quiz sobre: <%= quizTopic != null ? quizTopic : "Tema Desconhecido" %></h2>
 
-                        <button type="submit" formaction="<%= request.getContextPath() %>/saveQuiz" class="btn btn-secondary">
-                            <i class="fas fa-save"></i> Salvar
-                        </button>
-
-                        <button type="submit" formaction="<%= request.getContextPath() %>/downloadPdf" formmethod="get" class="btn btn-info">
-                            <i class="fas fa-download"></i> Baixar PDF
+                        <form method="post">
+                            <%-- Campo hidden para o quizId (se o quiz foi carregado do DB ou salvo e está na sessão) --%>
                             <% if (quizId != null) { %>
                                 <input type="hidden" name="quizId" value="<%= quizId %>">
                             <% } %>
-                            <%-- Não adicionamos um campo hidden para 'includeCorrectAnswers' aqui --%>
 
-                        </button>
-                         
-                    </div>
-                </form>
+                            <%
+                                for (int i = 0; i < questions.length(); i++) {
+                                    JSONObject question = questions.getJSONObject(i);
+                                    String pergunta = question.getString("pergunta");
+                                    JSONArray opcoesArray = question.getJSONArray("opcoes");
+                            %>
+                            <div class="bloco">
+                                <p class="question-text"><%= (i + 1) %>. <%= pergunta %></p>
+                                <div class="options-group">
+                                    <%
+                                        for (int j = 0; j < opcoesArray.length(); j++) {
+                                            String optionText = opcoesArray.getString(j);
+                                            String optionLetter = String.valueOf((char) ('A' + j));
+                                    %>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q_<%= i %>" id="q_<%= i %>_<%= optionLetter %>" value="<%= optionLetter %>" required>
+                                        <label class="form-check-label" for="q_<%= i %>_<%= optionLetter %>"><%= optionText %></label>
+                                    </div>
+                                    <%
+                                        }
+                                    %>
+                                </div>
+                                </div>
+                            <%
+                                } // Fim do loop de perguntas
+                            %>
                             
-                <%
-                        }
-                    } catch (Exception e) {
+                            <div class="btn-group-custom mt-4">
+                                <button type="submit" formaction="<%= request.getContextPath() %>/quizResults" class="btn btn-primary me-2">
+                                    <i class="fas fa-check"></i> Ver Resultado
+                                </button>
+                                    
+                                <button type="submit" formaction="<%= request.getContextPath() %>/downloadPdf" formmethod="get" class="btn btn-info me-2">
+                                    <i class="fas fa-file-pdf"></i> Baixar PDF (sem respostas)
+                                </button>
+                                    
+                            </div>
+                        </form>
+            <%
+                    } else {
             %>
-                <h2>Erro de Processamento</h2>
-                <div class="alert alert-danger" role="alert">
-                    Erro ao carregar as questões. A estrutura da resposta da IA pode estar incorreta ou houve um problema interno.
-                    <a href="<%= request.getContextPath() %>/index.jsp" class="alert-link">Tentar novamente</a>.<br>
-                    Detalhes: <%= e.getMessage() %>
-                </div>
+                        <div class="alert alert-info" role="alert">
+                            Nenhuma pergunta encontrada para este quiz. Tente gerar novamente.
+                        </div>
             <%
                     }
                 }

@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/web/mudar_usuario.jsp</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/web/assets/css/mudar_usuario.css</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/web/ListQuizzesServlet.java</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/web/listQuizzes.jsp</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/util/APICredential.java</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/nbproject/build-impl.xml</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/ia/Gemini.java</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/web/formulario.jsp</file>
-            <file>file:/home/gekki/Documentos/GitHub/QuizForge/src/java/web/SaveQuizServlet.java</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/web/ConsultQuizServlet.java</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/filters/AuthFilter.java</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/web/viewQuiz.jsp</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/util/APICredential.java</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/web/listQuizzes.jsp</file>
         </group>
     </open-files>
 </project-private>
