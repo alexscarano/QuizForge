@@ -1,4 +1,4 @@
-package web;
+package web.quiz;
 
 import java.io.IOException;
 import java.io.PrintWriter; // Não necessário se você está apenas encaminhando

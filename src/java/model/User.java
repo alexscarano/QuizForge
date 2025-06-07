@@ -1,5 +1,6 @@
 package model;
 
+import model.database.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import util.PasswordUtils;
+import util.Password;
 
 public class User {
     private int id;
@@ -85,7 +86,7 @@ public class User {
         if (rs.next()) {
             String storedHashedPassword = rs.getString("user_password");
 
-            if (PasswordUtils.checkPassword(plainPassword, storedHashedPassword)) {
+            if (Password.checkPassword(plainPassword, storedHashedPassword)) {
                 int id = rs.getInt("user_id");
                 String login = rs.getString("user_login");
                 String email = rs.getString("user_email");
@@ -109,7 +110,7 @@ public class User {
         
         stmt.setString(1, login);
         stmt.setString(2, email);
-        stmt.setString(3, PasswordUtils.hashPassword(password));
+        stmt.setString(3, Password.hashPassword(password));
         
         stmt.execute();
         stmt.close();
@@ -147,7 +148,7 @@ public class User {
         String sql = "UPDATE user SET user_password=? WHERE user_email=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
 
-        stmt.setString(1, PasswordUtils.hashPassword(password));
+        stmt.setString(1, Password.hashPassword(password));
         stmt.setString(2, email);
 
         stmt.execute();

@@ -1,6 +1,6 @@
 package web;
 
-import model.DBConnection;
+import model.database.DBConnection;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;

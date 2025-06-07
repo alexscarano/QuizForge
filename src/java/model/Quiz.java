@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import model.DBConnection;
+import model.database.DBConnection;
 
 public class Quiz {
     private int id; 
@@ -57,8 +57,6 @@ public class Quiz {
             return list;
     }
 
-  
-        
     public static ArrayList<Quiz> getQuizzesByUserId(int userId) throws Exception {
         ArrayList<Quiz> list = new ArrayList<>();
         Connection conn = DBConnection.getConnection();

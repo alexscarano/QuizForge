@@ -1,9 +1,9 @@
-package model;
+package model.database;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
-import util.DBCredentials;
+import util.credentials.DBCredentials;
 
 
 public class DBConnection {

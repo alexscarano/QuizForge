@@ -1,4 +1,4 @@
-package web;
+package web.user;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.User;
-import util.PasswordUtils;
+import util.Password;
 
 @WebServlet(name = "ProfileUpdateServlet", urlPatterns = {"/profileUpdate"})
 public class ProfileUpdateServlet extends HttpServlet {
@@ -74,9 +74,9 @@ public class ProfileUpdateServlet extends HttpServlet {
                         return;
                     }
                     
-                    if (PasswordUtils.checkPassword(currentPassword, currentUser.getPassword())) {
+                    if (Password.checkPassword(currentPassword, currentUser.getPassword())) {
                         User.updateUserPassword(currentUser.getEmail(), newPassword);
-                        currentUser.setPassword(PasswordUtils.hashPassword(newPassword));
+                        currentUser.setPassword(Password.hashPassword(newPassword));
                         session.setAttribute("user", currentUser);
                     }              
                     else {
@@ -98,7 +98,7 @@ public class ProfileUpdateServlet extends HttpServlet {
                             return;
                         }
                         
-                        if (!PasswordUtils.checkPassword(deletePassword, user.getPassword())) {
+                        if (!Password.checkPassword(deletePassword, user.getPassword())) {
                             request.setAttribute("errorMessage", "Senha incorreta. Conta não excluída.");
                             request.getRequestDispatcher("mudar_usuario.jsp").forward(request, response);
                             return;

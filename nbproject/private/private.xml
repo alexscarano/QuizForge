@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/web/ConsultQuizServlet.java</file>
             <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/filters/AuthFilter.java</file>
             <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/web/viewQuiz.jsp</file>
-            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/util/APICredential.java</file>
-            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/web/listQuizzes.jsp</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/util/credentials/APICredential.java</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/web/formulario.jsp</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/web/sobre_nos.jsp</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/web/CalculateQuizResultsServlet.java</file>
+            <file>file:/C:/Users/alexa/OneDrive/Documents/Java/QuizForge/src/java/ia/Gemini.java</file>
         </group>
     </open-files>
 </project-private>

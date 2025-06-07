@@ -55,6 +55,7 @@ build/
 # OS-specific files
 .DS_Store
 Thumbs.db
+
 src/java/util/APICredential.java
 src/java/util/APICredential.java
 src/java/util/DBCredentials.java

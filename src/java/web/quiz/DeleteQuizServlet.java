@@ -1,4 +1,4 @@
-package web;
+package web.quiz;
 
 import model.Quiz;
 import jakarta.servlet.ServletException;

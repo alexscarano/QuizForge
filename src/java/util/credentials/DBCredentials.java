@@ -1,4 +1,4 @@
-package util;
+package util.credentials;
 
 public class DBCredentials {
     // Altere conforme credenciais do seu bd

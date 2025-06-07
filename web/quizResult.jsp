@@ -18,7 +18,7 @@
         <%@include file="WEB-INF/jspf/header.jspf" %>
 
         <div class="form-template">
-            <h2 class="quiz-title text-center mb-4">Resultado do Quiz</h2> <%-- Adicionado text-center e margin --%>
+            <h2 class="quiz-title text-center mb-4">Resultados do Quiz</h2> 
 
             <%
                 String quizTopic = (String) request.getAttribute("quizTopic");
@@ -46,7 +46,7 @@
                     if (quizResults != null && !quizResults.isEmpty()) {
                         for (String feedback : quizResults) {
                 %>
-                            <div class="feedback-item mb-2 p-2 border rounded"> <%-- Novo div para cada item de feedback --%>
+                            <div class="feedback-item mb-2 p-2 border rounded">
                                 <%= feedback %>
                             </div>
                 <%
@@ -63,7 +63,6 @@
                 <a href="<%= request.getContextPath() %>/index.jsp" class="btn btn-warning me-3"> <%-- Aumentei margin --%>
                     <i class="fas fa-plus-circle"></i> Criar Novo Quiz
                 </a>
-                <%-- Botão para Salvar Quiz (aparece apenas se o quiz NÃO foi carregado do banco de dados) --%>
                 <% if (!isQuizAlreadySaved) { %>
                     <form action="<%= request.getContextPath() %>/saveQuiz" method="post" class="me-3">
                         <button type="submit" class="btn btn-primary">

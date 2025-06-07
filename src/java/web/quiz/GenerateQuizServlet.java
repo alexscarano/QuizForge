@@ -1,4 +1,4 @@
-package web;
+package web.quiz;
 
 import ia.Gemini;
 import java.io.IOException;

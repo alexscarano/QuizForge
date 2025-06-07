@@ -1,4 +1,4 @@
-package web;
+package web.user;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;

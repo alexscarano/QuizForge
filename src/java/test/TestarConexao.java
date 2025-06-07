@@ -1,12 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-package web;
+*** NÃO UTILIZE EM PRODUÇÃO ***
+Esta classe só deve ser utilizada para testar a conexão com banco de dados.
+*/ 
+package test;
 
 import java.io.IOException;
 import java.sql.Connection;
-import model.DBConnection;
+import model.database.DBConnection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

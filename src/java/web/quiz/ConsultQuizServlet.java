@@ -1,4 +1,4 @@
-package web; // Ou o pacote do seu servlet de consulta
+package web.quiz; // Ou o pacote do seu servlet de consulta
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
