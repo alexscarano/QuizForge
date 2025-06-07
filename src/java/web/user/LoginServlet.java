@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import util.InputValidation;
 import model.User;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/loginServlet"})
@@ -21,7 +22,14 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password").trim();
         String rememberMe = request.getParameter("rememberMe");
         User userAuth = null;
-
+        
+        if (!InputValidation.isNotNullOrEmpty(emailOrLogin) ||
+            !InputValidation.isNotNullOrEmpty(password)) {
+            request.setAttribute("errorMessage", "Todos os campos são obrigatórios.");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
+        }
+        
         try {
             userAuth = User.getUser(emailOrLogin, password);
             if (userAuth != null) {

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package web.user;
 
 import java.io.IOException;
@@ -10,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import util.InputValidation;
 import model.User;
 
 
@@ -25,11 +22,10 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password").trim();
         String confirmPassword = request.getParameter("confirmPassword").trim();
         
-       
-        if (login == null || login.trim().isEmpty() ||
-            email == null || email.trim().isEmpty() ||
-            password == null || password.trim().isEmpty() ||
-            confirmPassword == null || confirmPassword.trim().isEmpty()) {
+        if (!InputValidation.isNotNullOrEmpty(login) ||
+            !InputValidation.isNotNullOrEmpty(email) ||
+            !InputValidation.isNotNullOrEmpty(password) ||
+            !InputValidation.isNotNullOrEmpty(confirmPassword)) {
             request.setAttribute("errorMessage", "Todos os campos são obrigatórios.");
             request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
             return;
@@ -51,6 +47,24 @@ public class RegisterServlet extends HttpServlet {
         
         login = login.trim().replaceAll("\\s+", "").toLowerCase();
         
+        if (!InputValidation.isValidUsername(login)){
+            request.setAttribute("errorMessage", "Por favor, insira um login válido.");
+            request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+            return;
+        }
+        
+        if (!InputValidation.isValidEmail(email)){
+            request.setAttribute("errorMessage", "Por favor, insira um e-mail válido.");
+            request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+            return;
+        }
+        
+        if (!InputValidation.isValidPassword(password)){
+            request.setAttribute("errorMessage", "Por favor, insira uma senha válida.");
+            request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+            return;
+        }
+            
         try {
             User.insertUser(login, email, password);
             response.sendRedirect(request.getContextPath() + "/login.jsp?registerSuccess=true");

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import util.InputValidation;
 
 @WebServlet(name = "GenerateQuizServlet", urlPatterns = {"/generateQuiz"})
 public class GenerateQuizServlet extends HttpServlet {
@@ -21,12 +22,12 @@ public class GenerateQuizServlet extends HttpServlet {
 
         String quizTopic = request.getParameter("captureQuiz");
 
-        if (quizTopic == null || quizTopic.trim().isEmpty()) {
-            request.setAttribute("errorMessage", "O tópico do quiz não pode estar vazio.");
+        if (!InputValidation.isValidQuizTopic(quizTopic)){
+            request.setAttribute("errorMessage", "O tópico do quiz é inválido ou está vazio.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
-
+        
         String rawJsonResponseFromGemini = null;
         try {
        

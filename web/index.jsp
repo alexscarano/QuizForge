@@ -16,14 +16,20 @@
     
     <%@include file="WEB-INF/jspf/header.jspf" %>
 
-
     <main class="flex-grow-1 d-flex align-items-center justify-content-center">
         <div class="container text-center">
             <div class="mb-4">
                 <h1 class="display-5 fw-bold acme">Bem-vindo ao QuizForge!</h1>
                 <p class="lead mb-5 roboto">Digite o tema da prova que deseja gerar com a ajuda da IA</p>
             </div>
-
+            
+            <% String errorMessage = (String) request.getAttribute("errorMessage");
+                      if (errorMessage != null) { %>
+                     <div class="alert alert-danger text-center" role="alert">
+                       <%= errorMessage %>
+                     </div>
+           <% } %>
+           
             <form action="generateQuiz" method="POST" class="mx-auto">
                 <div class="input-group shadow-sm">
                     <input type="text" name="captureQuiz" class="form-control form-control-lg" maxlength="70" placeholder="Ex: História do Brasil, Java" required>
