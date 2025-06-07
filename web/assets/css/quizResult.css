@@ -7,7 +7,7 @@
     border-radius: 1rem;
 }
 
-.form-template h2 {
+.quiz-title {
     font-family: "Roboto", sans-serif;
     color: white;
     font-weight: bold;
@@ -16,6 +16,34 @@
     text-align: center;
     margin-bottom: 2rem;
 }
+
+.topic-heading {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-style: normal;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-style: normal;
+    margin-bottom: 1rem;
+}
+
+.feedback-item {
+    background-color: whitesmoke;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    min-width: 60vh;
+}
+
 
 .bloco {
     margin-bottom: 3rem;

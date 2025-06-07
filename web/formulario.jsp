@@ -5,12 +5,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/formulario.css">
-        <title>Responder Quiz</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <title>Questionário QuizForge</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
@@ -81,7 +84,7 @@
 
                     if (questions != null && questions.length() > 0) {
             %>
-                        <h2 class="quiz-title">Quiz sobre: <%= quizTopic != null ? quizTopic : "Tema Desconhecido" %></h2>
+            <h2 class="quiz-title">Tema: <%= quizTopic != null ? quizTopic : "Tema Desconhecido" %></h2>
 
                         <form method="post">
                             <%-- Campo hidden para o quizId (se o quiz foi carregado do DB ou salvo e está na sessão) --%>
@@ -117,11 +120,11 @@
                             %>
                             
                             <div class="btn-group-custom mt-4">
-                                <button type="submit" formaction="<%= request.getContextPath() %>/quizResults" class="btn btn-primary me-2">
+                                <button type="submit" formaction="<%= request.getContextPath() %>/quizResults" class="btn btn-warning me-2">
                                     <i class="fas fa-check"></i> Ver Resultado
                                 </button>
                                     
-                                <button type="submit" formaction="<%= request.getContextPath() %>/downloadPdf" formmethod="get" class="btn btn-info me-2">
+                                <button type="submit" formaction="<%= request.getContextPath() %>/downloadPdf" formmethod="get" class="btn btn-danger me-2">
                                     <i class="fas fa-file-pdf"></i> Baixar PDF (sem respostas)
                                 </button>
                                     
