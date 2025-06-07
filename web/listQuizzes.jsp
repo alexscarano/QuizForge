@@ -106,8 +106,8 @@
                                         </button>
                                     </form>
 
-                                        <%-- Botão para "Excluir Quiz" (Ainda precisa de um Servlet) --%>
-                                        <form action="<%= request.getContextPath() %>/deleteQuiz" method="post" style="display:inline-block;" onsubmit="return confirm('Tem certeza que deseja excluir este quiz (ID: <%= quiz.getId() %>)? Esta ação não pode ser desfeita.');">
+                                        <%-- Botão para "Excluir Quiz" --%>
+                                        <form action="<%= request.getContextPath() %>/deleteQuiz" method="post" style="display:inline-block;" onsubmit="return confirm('Tem certeza que deseja excluir este quiz (Tema: <%= quiz.getPrompt()%>) ? Esta ação não pode ser desfeita.');">
                                             <input type="hidden" name="quizId" value="<%= quiz.getId() %>">
                                             <button type="submit" class="btn btn-sm btn-danger" title="Excluir">
                                                 <i class="fas fa-trash-alt"></i> Excluir

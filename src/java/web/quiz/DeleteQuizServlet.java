@@ -44,13 +44,13 @@ public class DeleteQuizServlet extends HttpServlet {
 
         try {
             Quiz quiz = Quiz.getQuizById(quizIdToDelete);
-
+          
             if (quiz != null && quiz.getUserId() == userId) {
                 boolean deleted = Quiz.deleteQuiz(quizIdToDelete);
                 if (deleted) {
-                    session.setAttribute("successMessage", "Quiz (ID: " + quizIdToDelete + ") excluído com sucesso!");
+                    session.setAttribute("successMessage", "Quiz (Tema: " + quiz.getPrompt() + ") excluído com sucesso!");
                 } else {
-                    session.setAttribute("errorMessage", "Não foi possível excluir o quiz (ID: " + quizIdToDelete + "). Tente novamente.");
+                    session.setAttribute("errorMessage", "Não foi possível excluir o quiz (Tema: " + quiz.getPrompt() + "). Tente novamente.");
                 }
             } else {
                 session.setAttribute("errorMessage", "Você não tem permissão para excluir este quiz ou ele não existe.");

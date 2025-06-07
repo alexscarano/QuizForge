@@ -11,10 +11,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-// URLs que este filtro protegerá
+/* 
+URLs que este filtro protegerá. 
+PROTEGENDO JSP'S E ENDPOINTS
+*/
 @WebFilter(urlPatterns = {
     "/index.jsp", "/pagina_usuario.jsp", "/formulario.jsp", "/mudar_usuario.jsp", 
-    "/resultado.jsp", "/listQuizzes.jsp", "/quizResult.jsp", "/viewQuiz.jsp"}) 
+    "/resultado.jsp", "/listQuizzes.jsp", "/quizResult.jsp", "/viewQuiz.jsp", "/listQuizzes",
+    "/quizResults", "/saveQuiz", "/profileUpdate", "/generateQuiz", "/downloadPdf", 
+    "/deleteQuiz", "/consultQuiz"}) 
 public class AuthFilter implements Filter {
 
     @Override
