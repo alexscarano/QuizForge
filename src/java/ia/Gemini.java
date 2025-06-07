@@ -71,7 +71,7 @@ public class Gemini {
         String responseAI = parts.getJSONObject(0).getString("text").trim();
         
         String sanitizedResponse = sanitizeResponse(responseAI);
-        
+       
         try {
             new JSONArray(sanitizedResponse); // tenta fazer o parse
         } catch (Exception e) {

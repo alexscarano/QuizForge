@@ -52,7 +52,7 @@
               </div>
 
               <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" value="on">
                 <label class="form-check-label roboto" for="rememberMe">
                   Lembre de mim
                 </label>

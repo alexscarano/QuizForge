@@ -63,7 +63,7 @@ public class CalculateQuizResultsServlet extends HttpServlet {
                 JSONObject questionObj = questionsInJson.getJSONObject(i);
                 // Capturar a letra da resposta correta do JSON (ex: "A", "B", "C")
                 String correctAnswerLetter = questionObj.getString("respostaCorreta").trim().toUpperCase(); 
-                
+                    
                 // Capturar a letra da resposta do usuário do parâmetro (ex: "A", "B", "C")
                 String userAnswerLetter = request.getParameter("q_" + i); 
                 if (userAnswerLetter != null) {
