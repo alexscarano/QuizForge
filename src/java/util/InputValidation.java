@@ -1,7 +1,6 @@
 package util;
 
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 public class InputValidation {
 
@@ -54,7 +53,7 @@ public class InputValidation {
     }
     
     public static boolean isValidQuizTopic(String topic) {
-        return isNotNullOrEmpty(topic) && isValidLength(topic, 3, 69);
+        return isNotNullOrEmpty(topic) && isValidLength(topic, 2, 69);
     }
     
    

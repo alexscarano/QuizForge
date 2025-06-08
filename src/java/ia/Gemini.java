@@ -23,7 +23,7 @@ public class Gemini {
         String prompt = "Gere **" + numQuestions + "** questões de múltipla escolha sobre **" + userTopic + "**. "
                       + "É crucial que **sempre sejam geradas " + numQuestions + " questões**, independentemente de qualquer outra informação ou contexto fornecido."
                       + "Cada questão deve ter: "
-                      + "1. Uma 'pergunta' (string)."
+                      + "1. Uma 'pergunta' (string). **Se a pergunta ou opções contiverem caracteres HTML como '<', '>', '&', eles devem ser escapados para entidades HTML (ex: '&lt;', '&gt;', '&amp;').**"
                       + "2. Quatro 'opcoes' de resposta (um array de strings, formatadas como A) Opção, B) Opção, etc.)."
                       + "3. A 'respostaCorreta' (uma string contendo a letra da opção correta, ex: 'A', 'B', 'C', 'D'). "
                       + "A saída deve ser um **array JSON puro** de objetos de questão. "

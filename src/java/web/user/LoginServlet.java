@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import util.InputValidation;
+import util.InputSanitization;
 import model.User;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/loginServlet"})
@@ -18,10 +19,13 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String emailOrLogin = request.getParameter("emailOrLogin").trim();
-        String password = request.getParameter("password").trim();
+        String emailOrLoginRaw = request.getParameter("emailOrLogin").trim();
+        String passwordRaw = request.getParameter("password").trim();
         String rememberMe = request.getParameter("rememberMe");
         User userAuth = null;
+        
+        String emailOrLogin = InputSanitization.removeHtmlTags(emailOrLoginRaw);
+        String password = InputSanitization.removeHtmlTags(passwordRaw);
         
         if (!InputValidation.isNotNullOrEmpty(emailOrLogin) ||
             !InputValidation.isNotNullOrEmpty(password)) {

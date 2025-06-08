@@ -13,6 +13,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import util.InputValidation;
+import util.InputSanitization;
 
 @WebServlet(name = "GenerateQuizServlet", urlPatterns = {"/generateQuiz"})
 public class GenerateQuizServlet extends HttpServlet {
@@ -20,7 +21,8 @@ public class GenerateQuizServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String quizTopic = request.getParameter("captureQuiz");
+        String quizTopicRaw = request.getParameter("captureQuiz");   
+        String quizTopic = InputSanitization.removeHtmlTags(quizTopicRaw);
 
         if (!InputValidation.isValidQuizTopic(quizTopic)){
             request.setAttribute("errorMessage", "O tópico do quiz é inválido ou está vazio.");

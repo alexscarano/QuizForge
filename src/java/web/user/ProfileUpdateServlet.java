@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import model.User;
 import util.Password;
 import util.InputValidation;
+import util.InputSanitization;
 
 @WebServlet(name = "ProfileUpdateServlet", urlPatterns = {"/profileUpdate"})
 public class ProfileUpdateServlet extends HttpServlet {
@@ -27,7 +28,7 @@ public class ProfileUpdateServlet extends HttpServlet {
         User currentUser = null;
         Integer userId = null;
 
-
+        
         if (session.getAttribute("user") != null) {
             try {
                 currentUser = (User) session.getAttribute("user");
@@ -86,7 +87,8 @@ public class ProfileUpdateServlet extends HttpServlet {
         try {
             switch (action) {
                 case "updateLogin":
-                    String newLogin = request.getParameter("newLogin");
+                    String newLoginRaw = request.getParameter("newLogin");
+                    String newLogin = InputSanitization.removeHtmlTags(newLoginRaw);
                     
                     if (!InputValidation.isNotNullOrEmpty(newLogin)) {
                         request.setAttribute("errorMessage", "O campo 'Login' não pode estar vazio.");
@@ -118,7 +120,8 @@ public class ProfileUpdateServlet extends HttpServlet {
                     break;
 
                 case "updateEmail":
-                    String newEmail = request.getParameter("newEmail");
+                    String newEmailRaw = request.getParameter("newEmail");
+                    String newEmail = InputSanitization.removeHtmlTags(newEmailRaw);
                     
                     if (!InputValidation.isNotNullOrEmpty(newEmail)) {
                         request.setAttribute("errorMessage", "O campo 'Email' não pode estar vazio.");
@@ -157,8 +160,11 @@ public class ProfileUpdateServlet extends HttpServlet {
                     break;
                     
                 case "updatePassword":
-                    String currentPassword = request.getParameter("currentPassword");
-                    String newPassword = request.getParameter("newPassword");
+                    String currentPasswordRaw = request.getParameter("currentPassword");
+                    String newPasswordRaw = request.getParameter("newPassword");
+                    
+                    String currentPassword = InputSanitization.removeHtmlTags(currentPasswordRaw);
+                    String newPassword = InputSanitization.removeHtmlTags(newPasswordRaw);
                     
                     if (!InputValidation.isNotNullOrEmpty(currentPassword) || !InputValidation.isNotNullOrEmpty(newPassword)) {
                         request.setAttribute("errorMessage", "Os campos de senha não podem estar vazios.");
@@ -189,8 +195,11 @@ public class ProfileUpdateServlet extends HttpServlet {
                     break;
                     
                 case "deleteAccount": 
-                    String userEmailToDelete = (String) session.getAttribute("userLogged");
-                    String deletePassword = request.getParameter("deletePassword");
+                    String userEmailToDeleteRaw = (String) session.getAttribute("userLogged");
+                    String deletePasswordRaw = request.getParameter("deletePassword");
+                    
+                    String userEmailToDelete = InputSanitization.removeHtmlTags(userEmailToDeleteRaw);
+                    String deletePassword = InputSanitization.removeHtmlTags(deletePasswordRaw);
                     
                     if (!InputValidation.isNotNullOrEmpty(deletePassword)) {
                         request.setAttribute("errorMessage", "Por favor, digite sua senha para confirmar a exclusão da conta.");

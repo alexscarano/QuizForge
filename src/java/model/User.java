@@ -90,7 +90,6 @@ public class User {
                 LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
                 return new User(id, login, email, storedHashedPassword, createdAt);
             }
-
         rs.close();
         stmt.close();
         conn.close();

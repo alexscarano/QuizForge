@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import util.InputValidation;
+import util.InputSanitization;
 import model.User;
 
 
@@ -17,10 +18,16 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String login = request.getParameter("login").trim().toLowerCase();
-        String email = request.getParameter("email").trim();
-        String password = request.getParameter("password").trim();
-        String confirmPassword = request.getParameter("confirmPassword").trim();
+        String loginRaw = request.getParameter("login").trim().toLowerCase();
+        String emailRaw = request.getParameter("email").trim();
+        String passwordRaw = request.getParameter("password").trim();
+        String confirmPasswordRaw = request.getParameter("confirmPassword").trim();
+        
+        // Sanitização para evitar XSS
+        String login = InputSanitization.removeHtmlTags(loginRaw);
+        String email = InputSanitization.removeHtmlTags(emailRaw);
+        String password = InputSanitization.removeHtmlTags(passwordRaw);
+        String confirmPassword = InputSanitization.removeHtmlTags(confirmPasswordRaw);
         
         if (!InputValidation.isNotNullOrEmpty(login) ||
             !InputValidation.isNotNullOrEmpty(email) ||
