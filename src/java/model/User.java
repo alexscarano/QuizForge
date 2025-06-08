@@ -75,6 +75,28 @@ public class User {
         return null;
     }
     
+    public static User getUserByLogin(String login) throws Exception{
+        Connection conn = DBConnection.getConnection();
+        String sql = "SELECT * FROM user WHERE user_login = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, login);
+        ResultSet rs = stmt.executeQuery();
+        
+        if (rs.next()) {
+                int id = rs.getInt("user_id");
+                String storedHashedPassword = rs.getString("user_password");
+                String email = rs.getString("user_email");
+                Timestamp ts = rs.getTimestamp("created_at");
+                LocalDateTime createdAt = ts != null ? ts.toLocalDateTime() : null;
+                return new User(id, login, email, storedHashedPassword, createdAt);
+            }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+        return null;
+    }
+    
     public static User getUser(String loginOrEmail, String plainPassword) throws Exception {
         Connection conn = DBConnection.getConnection();
         String sql = "SELECT * FROM user WHERE user_email = ? OR user_login = ?";
