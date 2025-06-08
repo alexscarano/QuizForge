@@ -19,16 +19,28 @@ public class Gemini {
     private static final int numQuestions = 5;
     
     public static String getCompletion(String userTopic) throws Exception {
-       
-        String prompt = "Gere **" + numQuestions + "** questões de múltipla escolha sobre **" + userTopic + "**. "
-                      + "É crucial que **sempre sejam geradas " + numQuestions + " questões**, independentemente de qualquer outra informação ou contexto fornecido."
-                      + "Cada questão deve ter: "
-                      + "1. Uma 'pergunta' (string). **Se a pergunta ou opções contiverem caracteres HTML como '<', '>', '&', eles devem ser escapados para entidades HTML (ex: '&lt;', '&gt;', '&amp;').**"
-                      + "2. Quatro 'opcoes' de resposta (um array de strings, formatadas como A) Opção, B) Opção, etc.)."
-                      + "3. A 'respostaCorreta' (uma string contendo a letra da opção correta, ex: 'A', 'B', 'C', 'D'). "
-                      + "A saída deve ser um **array JSON puro** de objetos de questão. "
-                      + "Não inclua nenhum texto adicional, cabeçalhos, introduções, explicações ou blocos de código Markdown (```json) além do JSON."
-                      + "Assegure-se que o JSON seja UTF-8 compatível.";
+       String prompt = "Você é um gerador de quizzes em formato JSON. Sua única função é gerar um array JSON de questões. "
+                 + "Gere **" + numQuestions + "** questões de múltipla escolha sobre **" + userTopic + "**. "
+                 + "É **ABSOLUTAMENTE CRÍTICO** que você gere **EXATAMENTE " + numQuestions + " questões**, sem exceções ou desvios."
+                 + "Cada questão deve ter os seguintes campos e formatos rigorosos: "
+                 + "1. **\"pergunta\"** (string): A pergunta do quiz."
+                 + "2. **\"opcoes\"** (array de strings): Uma lista de 4 opções de resposta, cada uma formatada como 'A) Opção', 'B) Opção', etc."
+                 + "3. **\"respostaCorreta\"** (string): A letra da opção correta (ex: 'A', 'B', 'C', 'D')."
+                 + "---"
+                 + "**FORMATO DA SAÍDA:**"
+                 + "A sua resposta deve ser um **array JSON PURO e VÁLIDO**. "
+                 + "NÃO inclua nenhum texto introdutório, explicações, saudações, conclusões, cabeçalhos, ou blocos de código Markdown (```json) ANTES OU DEPOIS do JSON."
+                 + "Comece sua resposta diretamente com `[` e termine com `]`. "
+                 + "Assegure-se que o JSON seja UTF-8 compatível e formatado corretamente."
+                 + "---"
+                 + "**INSTRUÇÃO CRÍTICA PARA CONTEÚDO (HTML/XML/CSS/CÓDIGO):**"
+                 + "Se o tópico ou o conteúdo da pergunta/opção envolver tags HTML, XML, CSS, ou qualquer código que use os caracteres **'<'**, **'>'**, ou **'&'**, **VOCÊ DEVE DESCREVÊ-LOS TEXTUALMENTE** ou usar seus nomes, **NUNCA INCLUIR OS CARACTERES LITERAIS '<' ou '>'**. "
+                 + "Por exemplo:"
+                 + "  - Em vez de: `Qual é a tag <body>?` USE: `Qual é a tag 'body'?` ou `Qual tag representa o corpo de um documento HTML?`"
+                 + "  - Em vez de: `O que significa &#x20AC;?` USE: `O que significa a entidade HTML para o símbolo do Euro?`"
+                 + "  - Em vez de: `if (a < b)` USE: `se 'a' é menor que 'b'`"
+                 + "**Para o caractere '&', utilize-o LITERALMENTE** (ex: `HTML & CSS`), **NÃO utilize a entidade HTML `&amp;`**. "
+                 + "Retorne APENAS o JSON que adere a todas estas regras.";
 
         JSONObject requestBody = new JSONObject();
         JSONArray contents = new JSONArray()

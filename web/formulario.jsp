@@ -125,6 +125,7 @@
                                 </button>
                                     
                                 <button type="submit" formaction="<%= request.getContextPath() %>/downloadPdf" formmethod="get" class="btn btn-danger me-2">
+                                    <input type="hidden" name="quizId" value="<%= quizId != null ? quizId : "" %>">
                                     <i class="fas fa-file-pdf"></i> Baixar PDF (sem respostas)
                                 </button>
                                     

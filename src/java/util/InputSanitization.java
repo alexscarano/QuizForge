@@ -3,9 +3,8 @@ package util;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.errors.EncodingException;
 
-public class InputSanitization {
-
-    
+public class InputSanitization {    
+   
     /*
     Sanitiza uma string para uso seguro em HTML, prevenindo ataques XSS.
      Converte caracteres especiais em entidades HTML.

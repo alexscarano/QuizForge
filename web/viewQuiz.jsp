@@ -23,8 +23,7 @@
             <%
                 // Recupera os dados do quiz do request (vindos do ConsultQuizServlet)
                 String quizQuestionsJson = (String) request.getAttribute("quizQuestionsJson");
-                String quizTopic = (String) request.getAttribute("quizTopic");
-                             
+                String quizTopic = (String) request.getAttribute("quizTopic");                          
                 String errorMessage = (String) request.getAttribute("errorMessage");
                 if (errorMessage != null) {
             %>
@@ -76,12 +75,20 @@
                                         <%
                                             // Loop para exibir as opções de cada questão
                                             for (int j = 0; j < opcoesArray.length(); j++) {
-                                                String optionText = opcoesArray.getString(j);
+                                                String optionTextWithLetter = opcoesArray.getString(j);
                                                 String optionLetter = String.valueOf((char) ('A' + j)); // Para A, B, C, D
+                                                String optionTextWithoutLetter = ""; 
+                                                
+                                               // Utilizando substring para tirar a letra da questão e mostrar somente a opção
+                                               if (optionTextWithLetter != null && optionTextWithLetter.length() >= 3) {
+                                                   optionTextWithoutLetter = optionTextWithLetter.substring(3).trim();
+                                               } else {
+                                                   optionTextWithoutLetter = optionTextWithLetter;
+                                               }
                                         %>
                                             <div>
-                                                <%-- Apenas exibe as opções como texto, sem inputs de rádio --%>
-                                                <span><%= optionLetter %>.</span> <label><%= optionText %></label>
+                                                <%-- Apenas exibe as opções como texto, sem inputs --%>
+                                                <span><%= optionLetter %>)</span> <label><%= optionTextWithoutLetter %></label>
                                             </div>
                                         <%
                                             }

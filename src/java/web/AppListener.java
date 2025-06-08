@@ -15,6 +15,7 @@ public class AppListener implements ServletContextListener{
     
     public static String initializeLog = "";
     public static Exception exception = null;
+    private static final String database = "quizforge";
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
@@ -32,8 +33,9 @@ public class AppListener implements ServletContextListener{
             initializeLog += "Connected to the database \n";
             s = conn.createStatement();
             initializeLog += new Date() + ": Initializing database creation \n";
-            initializeLog += "Creating Users table if not exists...\n";
-            
+            s.execute(createDatabase());
+            initializeLog += new Date() + ": database created \n";
+            initializeLog += "Creating Users table if not exists...\n";     
             s.execute(User.getCreateStatement());
             initializeLog += "User table has been created or already exists\n";
                        
@@ -51,7 +53,11 @@ public class AppListener implements ServletContextListener{
         } catch (Exception e) {
             initializeLog += "Error: \n" + e.getMessage();
         }
-              
+                
+    }
+    
+    private static String createDatabase(){
+        return "CREATE DATABASE IF NOT EXISTS " + database + ";";    
     }
             
 }

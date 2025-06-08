@@ -8,8 +8,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie; 
 import model.Quiz;
+import model.User; 
 import util.Pdf;
+import util.InputValidation; 
 
 @WebServlet(name = "DownloadPdfServlet", urlPatterns = {"/downloadPdf"})
 public class DownloadPdfServlet extends HttpServlet {
@@ -18,14 +21,44 @@ public class DownloadPdfServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false); 
+        HttpSession session = request.getSession(true); 
 
-        Integer sessionUserId = null;
-        if (session != null) {
-            sessionUserId = (Integer) session.getAttribute("userId");    
+        Integer sessionUserId = (Integer) session.getAttribute("userId");
+        
+        if (sessionUserId == null || sessionUserId <= 0) {
+            String userEmailFromCookie = null;
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("userLogged")) {
+                        userEmailFromCookie = cookie.getValue();
+                        break;
+                    }
+                }
+            }
+
+            if (InputValidation.isNotNullOrEmpty(userEmailFromCookie)) {
+                try {
+                    User userFromDB = User.getUserByEmail(userEmailFromCookie); // Assumindo que User.getUserByEmail existe
+                    if (userFromDB != null) {
+                        session.setAttribute("user", userFromDB);
+                        session.setAttribute("userLogged", userFromDB.getEmail());
+                        session.setAttribute("userId", userFromDB.getId());
+                        sessionUserId = userFromDB.getId(); 
+                    } else {
+                        // Invalida o cookie no cliente
+                        Cookie deleteCookie = new Cookie("userLogged", "");
+                        deleteCookie.setMaxAge(0); // Imediatamente expira o cookie
+                        deleteCookie.setPath("/"); // Garante que o cookie seja removido do caminho correto
+                        response.addCookie(deleteCookie);
+                        session.invalidate(); 
+                    }
+                } catch (Exception e) {
+                }
+            }
         }
 
-        // Se o usuário não estiver logado, proíbe o download
+        // Se o usuário ainda não estiver logado após a tentativa de revalidação, proíbe o download
         if (sessionUserId == null || sessionUserId <= 0) {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, "Você precisa estar logado para baixar PDFs.");
             return;
@@ -34,58 +67,63 @@ public class DownloadPdfServlet extends HttpServlet {
         String quizQuestionsJson = null;
         String quizTopic = null;
         
-        // Determina se as respostas corretas devem ser incluídas
         boolean includeCorrectAnswers = "true".equalsIgnoreCase(request.getParameter("includeCorrectAnswers"));
 
         String idParam = request.getParameter("quizId");
         
-        if (idParam != null && !idParam.isEmpty()) {
+        if (idParam == null || idParam.isEmpty()) {
+            // Esse é o cenário onde o quiz não foi salvo no DB ainda.
+            quizQuestionsJson = (String) session.getAttribute("quizQuestionsJson");
+            quizTopic = (String) session.getAttribute("quizTopic");
+            
+            // Se ainda não temos o quiz, retornamos erro
+            if (quizQuestionsJson == null || quizQuestionsJson.trim().isEmpty() ||
+                quizTopic == null || quizTopic.trim().isEmpty()) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Não há quiz para baixar. Gere um quiz primeiro.");
+                return;
+            }
+            
+        } else {
+            // Cenário: quizId presente na URL (quiz já salvo no DB)
+            Integer quizId = null;
             try {
-                Integer quizId = Integer.parseInt(idParam);
-                Quiz quiz = Quiz.getQuizById(quizId); // Supondo que você tem esse método
+                quizId = Integer.parseInt(idParam);
+            } catch (NumberFormatException e) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID do quiz inválido: " + idParam);
+                return;
+            }
 
-                // Quiz encontrado e o userId logado é o dono do quiz
-                if (quiz != null && quiz.getUserId() == sessionUserId) { 
+            try {
+                Quiz quiz = Quiz.getQuizById(quizId); 
+
+                if (quiz != null) {
+                    // ** Verificação de propriedade do quiz **
+                    if (quiz.getUserId() != sessionUserId) { // Usa o sessionUserId revalidado/obtido
+                        response.sendError(HttpServletResponse.SC_FORBIDDEN, "Você não tem permissão para baixar este quiz.");
+                        return;
+                    }
                     quizQuestionsJson = quiz.getContent();
                     quizTopic = quiz.getPrompt();
-                } else if (quiz != null && quiz.getUserId() != sessionUserId) {
-                    response.sendError(HttpServletResponse.SC_FORBIDDEN, "Você não tem permissão para baixar este quiz.");
-                    return;
-                } else { // quiz == null
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Quiz com ID " + quizId + " não encontrado ou não disponível.");
+                } else {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Quiz com ID " + quizId + " não encontrado.");
                     return;
                 }
-            } catch (NumberFormatException e) {
-                // Se o ID é inválido, então tentamos carregar da sessão como fallback (caso seja um quiz recém-gerado sem ID válido)
-                // Mensagem de debugging caso seja necessário
             } catch (Exception ex) {
-               
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao carregar os dados do quiz do banco de dados.");
+                return;
             }
         }
 
-        // Se o quiz não foi carregado do banco de dados (porque não tinha ID válido ou era um quiz recém-gerado),
-        // tentamos carregá-lo da sessão.
-        if (quizQuestionsJson == null || quizQuestionsJson.trim().isEmpty()) {
-            quizQuestionsJson = (String) session.getAttribute("quizQuestionsJson");
-            quizTopic = (String) session.getAttribute("quizTopic");
-        }
-
-        // Validação final dos dados do quiz antes de gerar o PDF
-        if (quizQuestionsJson == null || quizQuestionsJson.trim().isEmpty() ||
-            quizTopic == null || quizTopic.trim().isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Não há quiz para baixar. Gere um quiz primeiro ou selecione um existente.");
-            return;
-        }
-
+        // Se chegarmos aqui, temos quizQuestionsJson e quizTopic, seja da sessão ou do DB.
         byte[] pdfBytes = null;
         try {
             pdfBytes = Pdf.generateQuizPdf(quizTopic, quizQuestionsJson, includeCorrectAnswers); 
 
             response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", "attachment; filename=\"" + quizTopic.replaceAll("[^a-zA-Z0-9_.-]", "_") + "_Quiz.pdf\"");
+            String safeQuizTopic = quizTopic.replaceAll("[^a-zA-Z0-9_.-]", "_");
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + safeQuizTopic + "_Quiz.pdf\"");
             response.setContentLength(pdfBytes.length);
 
-            // Saída do PDF
             try (OutputStream out = response.getOutputStream()) {
                 out.write(pdfBytes);
                 out.flush();
