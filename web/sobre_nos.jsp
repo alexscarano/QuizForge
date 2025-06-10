@@ -54,22 +54,30 @@
                 <h2 class="quizforge-section-title mb-4 acme" style="color: #FF6F00">Equipe</h2>
                 <div class="row justify-content-center">
                     <div class="col-6 col-md-3 mb-4">
-                        <div class="member-photo-circle mx-auto mb-3"><img src="assets/images/image.png" class="img-members member-photo-circle"></div>
+                        <div class="member-photo-circle mx-auto mb-3">
+                            <img src="assets/images/profissional_alexandre.jpeg" alt="foto git" class="img-members member-photo-circle">
+                        </div>
                         <h3 class="quizforge-member-name">Alexandre Scarano</h3>
                         <p class="quizforge-member-role roboto" style="color: #FF6F00">Desenvolvedor <br> Back-End e Banco de Dados</p>
                     </div>
                     <div class="col-6 col-md-3 mb-4">
-                        <div class="member-photo-circle mx-auto mb-3"><img src="assets/images/heiitorft.jpg" alt="alt" class="img-members member-photo-circle"/></div>
+                        <div class="member-photo-circle mx-auto mb-3">
+                            <img src="assets/images/profissional_gabriel.png" alt="foto git" class="img-members member-photo-circle"/>
+                        </div>
                         <h3 class="quizforge-member-name">Gabriel Altino</h3>
                         <p class="quizforge-member-role roboto" style="color: #FF6F00">Desenvolvedor <br> Front-End</p>
                     </div>
                     <div class="col-6 col-md-3 mb-4">
-                        <div class="member-photo-circle mx-auto mb-3"><img src="assets/images/seyft.jpg" alt="alt" class="img-members member-photo-circle"/></div>
+                        <div class="member-photo-circle mx-auto mb-3">
+                            <img src="assets/images/profissional_heitor.jpeg" alt="foto git" class="img-members member-photo-circle"/>
+                        </div>
                         <h3 class="quizforge-member-name">Heitor Teixeira</h3>
                         <p class="quizforge-member-role roboto" style="color: #FF6F00">Desenvolvedor <br> Front-End</p>
                     </div>
                     <div class="col-6 col-md-3 mb-4">
-                        <div class="member-photo-circle mx-auto mb-3"><img src="assets/images/john-marston-is-so-much-more-bad-ass-in-rdr1-v0-k70ginzzs14b1-3404878409.jpg" alt="alt" class="img-members member-photo-circle"/></div>
+                        <div class="member-photo-circle mx-auto mb-3">
+                            <img src="assets/images/profissional_sey.png" alt="foto git" class="img-members member-photo-circle"/>
+                        </div>
                         <h3 class="quizforge-member-name">Sey Forasteira</h3>
                         <p class="quizforge-member-role roboto" style="color: #FF6F00">Desenvolvedor <br> Back-End</p>
                     </div>

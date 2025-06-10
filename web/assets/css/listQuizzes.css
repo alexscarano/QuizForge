@@ -9,10 +9,12 @@
 .table th, .table td {
     vertical-align: middle;
     padding-bottom: 1rem;
-    max-width: 12rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    max-width: 50vh;
+}
+
+.alert {
+    margin: 0rem;
+    padding: 1rem;
 }
 
 .table {

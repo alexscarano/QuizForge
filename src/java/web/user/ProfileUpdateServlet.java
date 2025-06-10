@@ -96,7 +96,7 @@ public class ProfileUpdateServlet extends HttpServlet {
                         return;
                     }
                     if (!InputValidation.isValidUsername(newLogin)) { // Adiciona validação de formato
-                        request.setAttribute("errorMessage", "Formato de login inválido. Use letras, números, hífens ou underscores (3-20 caracteres).");
+                        request.setAttribute("errorMessage", "Formato de login inválido. Use letras, números, hífens ou underscores (3-35 caracteres).");
                         request.getRequestDispatcher("mudar_usuario.jsp").forward(request, response);
                         return;
                     }
@@ -227,6 +227,7 @@ public class ProfileUpdateServlet extends HttpServlet {
 
                 default:
                     request.setAttribute("errorMessage", "Ação inválida.");
+                    request.getRequestDispatcher("mudar_usuario.jsp").forward(request, response);
                     break;
             }
             

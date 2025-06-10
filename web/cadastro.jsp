@@ -37,6 +37,10 @@
                       <i class="fa-solid fa-user"></i> Usuário
                     </label>
                     <input type="text" class="form-control" id="login" name="login" placeholder="Escolha um nome de usuário" required>
+                    <ul class="regras">
+                        <li>Sem espaço</li>
+                        <li>Entre 3 e 35 caracteres</li>
+                    </ul>
                   </div>
 
                   <div class="mb-3">
@@ -58,6 +62,11 @@
                       <i class="fa-solid fa-lock"></i> Confirmar Senha
                     </label>
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha" required>
+                    <ul class="regras">
+                        <li>8 caracteres</li>
+                        <li>1 letra minúscula e 1 letra maiúscula</li>
+                        <li>1 caractere especial</li>
+                    </ul>
                   </div>
 
                   <div class="d-grid mb-3">

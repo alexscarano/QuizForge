@@ -102,7 +102,7 @@
                                         <input type="hidden" name="quizId" value="<%= quiz.getId() %>">
                                         <input type="hidden" name="includeCorrectAnswers" value="true"> <%-- <<< ESTA LINHA É A CHAVE! --%>
                                         <button type="submit" class="btn btn-info" title="Baixar PDF">
-                                            <i class="fas fa-file-pdf"></i> Baixar PDF com Respostas
+                                            <i class="fas fa-file-pdf"></i> Baixar PDF
                                         </button>
                                     </form>
 
