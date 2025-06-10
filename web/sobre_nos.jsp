@@ -79,7 +79,7 @@
                             <img src="assets/images/profissional_sey.png" alt="foto git" class="img-members member-photo-circle"/>
                         </div>
                         <h3 class="quizforge-member-name">Sey Forasteira</h3>
-                        <p class="quizforge-member-role roboto" style="color: #FF6F00">Desenvolvedor <br> Back-End</p>
+                        <p class="quizforge-member-role roboto" style="color: #FF6F00">Desenvolvedora <br> Back-End</p>
                     </div>
                 </div>
             </section>
